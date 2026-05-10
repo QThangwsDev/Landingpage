@@ -1,0 +1,70 @@
+
+
+/* Tablet */
+@media (max-width: 992px)
+{
+    .sidebar
+    {
+        background-color: orange;
+        width: 120px;
+    }
+
+    .main
+    {
+        background-color: lightblue;
+    }
+}
+
+/* Mobile */
+.Template
+{
+    display: grid;
+
+    /* Sidebar co giãn */
+    grid-template-columns: clamp(60px, 20vw, 200px) 1fr;
+
+    grid-template-rows: 90px 1fr;
+
+    grid-template-areas:
+    "hd hd"
+    "sd ct";
+
+    height: 100vh;
+}
+
+.Header
+{
+    grid-area: hd;
+    background: linear-gradient(45deg, red , black);
+}
+
+.sidebar
+{
+    grid-area: sd;
+    background-color: beige;
+}
+
+.main
+{
+    grid-area: ct;
+    background-color: aqua;
+}
+
+/* Mobile */
+@media (max-width: 600px)
+{
+    .Template
+    {
+        grid-template-columns: 60px 1fr;
+        grid-area:
+        "hd"
+        "sd"
+        "ct";
+    }
+
+    .sidebar
+    {
+        grid-area: sd ;
+        background-color: pink;
+    }
+}
