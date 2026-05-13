@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body class="bg-green-300">
+ <!-- Container chính: dùng overflow-x-auto để có thể vuốt trên điện thoại -->
+<!-- snap-x snap-mandatory giúp khi vuốt, thẻ tự động "hít" vào giữa -->
+<div class="w-full py-10 overflow-x-auto flex snap-x snap-mandatory no-scrollbar">
+    
+    <!-- Spacer giả ở đầu để thẻ đầu tiên có thể nằm giữa màn hình -->
+    <div class="shrink-0 w-[15vw]"></div>
+
+    <!-- Thẻ 1 -->
+    <div class="snap-center shrink-0 w-[70vw] sm:w-[400px] bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-xl mx-4">
+        <div class="flex items-center space-x-4 mb-4">
+            <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=1" alt="Avatar">
+            <div>
+                <h4 class="text-white font-bold text-sm">Minh Anh</h4>
+                <div class="flex text-yellow-400 text-[10px]">★★★★★</div>
+            </div>
+        </div>
+        <p class="text-gray-300 text-xs sm:text-sm italic line-clamp-3">"Giao diện cực mượt, danh sách nhạc SoundWave rất đa dạng. Nghe cả ngày không chán!"</p>
+    </div>
+
+    <!-- Thẻ 2 -->
+    <div class="snap-center shrink-0 w-[70vw] sm:w-[400px] bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-xl mx-4">
+        <div class="flex items-center space-x-4 mb-4">
+            <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=2" alt="Avatar">
+            <div>
+                <h4 class="text-white font-bold text-sm">Hoàng Nam</h4>
+                <div class="flex text-yellow-400 text-[10px]">★★★★★</div>
+            </div>
+        </div>
+        <p class="text-gray-300 text-xs sm:text-sm italic line-clamp-3">"App âm nhạc tốt nhất mình từng dùng. Tìm bài hát nào cũng có, chất lượng âm thanh 10/10."</p>
+    </div>
+
+    <!-- Thẻ 3 -->
+    <div class="snap-center shrink-0 w-[70vw] sm:w-[400px] bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-xl mx-4">
+        <div class="flex items-center space-x-4 mb-4">
+            <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=3" alt="Avatar">
+            <div>
+                <h4 class="text-white font-bold text-sm">Linh Chi</h4>
+                <div class="flex text-yellow-400 text-[10px]">★★★★☆</div>
+            </div>
+        </div>
+        <p class="text-gray-300 text-xs sm:text-sm italic line-clamp-3">"Thích nhất tính năng gợi ý nhạc của SoundWave, đúng gu mình luôn. Rất đáng trải nghiệm!"</p>
+    </div>
+
+    <!-- Spacer giả ở cuối -->
+    <div class="shrink-0 w-[15vw]"></div>
+</div>
+
+<!-- 3 Dấu chấm -->
+<div class="flex justify-center space-x-2 mt-4">
+    <div class="w-2 h-2 bg-white rounded-full opacity-100"></div>
+    <div class="w-2 h-2 bg-white rounded-full opacity-30"></div>
+    <div class="w-2 h-2 bg-white rounded-full opacity-30"></div>
+</div>
+
+<style>
+    /* Ẩn thanh cuộn để nhìn đẹp hơn */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+    
+</body>
+</html>

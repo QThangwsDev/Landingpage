@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Landing page Spotify</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Landing page SoundWave</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -128,9 +130,11 @@
             
             <!-- Container bọc ngoài div trắng: dùng flex-1 để lấp đầy khoảng trống và căn giữa -->
             <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
-                <div class="w-[80px] h-[80px] bg-white flex justify-center items-center rounded-t-lg shadow-lg
+                <div class="w-[80px] h-[80px] bg-white rounded-t-lg shadow-lg
                             sm:w-[120px] sm:h-[120px]
                             md:w-[180px] md:h-[180px]">
+                            <img src="./img/search.png" alt="img"
+                            class="object-cover cover w-full h-full rounded-t-lg">
                 </div>
             </div>
         </div>
@@ -201,9 +205,111 @@
     </div>
     
 </section>
+<!-- Section tiếp theo -->
+<section class="w-full h-[300px] bg-slate-600 flex flex-col px-[clamp(1rem,5vw,2rem)]
+            sm:h-[400px]
+            md:h-[500px]">
+    <div class="w-full h-[200px] mx-auto flex items-center justify-center text-center">
+        <span class="text-bold-500 text-lg text-white 
+                    sm:text-xl
+                    md:text-2xl"> SoundWave offers free music,curated playlists can't find anywhere else, Or you can get our <p class="text-blue-400">Premium plan</p></span>
+    </div>
+    <!--Icon quyen loi cua premium-->
+    <div class=" w-full h-[200px] flex items-center justify-center space-x-10 px-4 mb-10
+                sm:space-x-20
+                md:space-x-40">
+                <!--Item 1-->
+        <div class="w-[180px] h-[200px] rounded-lg  flex flex-col items-center justify-center padding-4
+                    sm:w-[220px] sm:h-[250px]
+                    md:w-[280px] md:h-[300px]">
+            <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 object-cover flex items-center justify-center
+                        sm:w-20 sm:h-20
+                        md:w-24 md:h-24">
+                <i class="fa-solid fa-music text-2xl text-white"></i>
+            </div>
+            <p class=" w-full stext-sm font-bold text-white
+                    sm:text-lg
+                    md:text-xl">Enjoy amazing sound quakity on personalized music</p>
+        </div>
+        <!--Item 2-->
+        <div class="w-[180px] h-[200px] rounded-lg  flex flex-col items-center justify-center
+                    sm:w-[220px] sm:h-[250px]
+                    md:w-[280px] md:h-[300px]">
+            <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 object-cover flex items-center justify-center
+                        sm:w-20 sm:h-20
+                        md:w-24 md:h-24">
+                <i class="fa-solid fa-download text-2xl text-white"></i>
+            </div>
+            <p class="text-sm font-bold text-white
+                    sm:text-lg
+                    md:text-xl">Dowload and play music for offline listening</p>
+        </div>
+        <!--Item 3-->
+        <div class="w-[180px] h-[200px]  rounded-lg  flex flex-col items-center justify-center
+                    sm:w-[220px] sm:h-[250px]
+                    md:w-[280px] md:h-[300px]">
+            <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 object-cover flex items-center justify-center
+                        sm:w-20 sm:h-20
+                        md:w-24 md:h-24">
+                <i class="fa-solid fa-ad text-2xl text-white"></i>
+            </div>
+            <p class="text-sm font-bold text-white
+                    sm:text-lg
+                    md:text-xl">Listen to an ablbum or playlist without ad breaks</p>
+        </div>
+    </div>
+</section>
 
-<section class="w-full h-[300px] bg-slate-600">
-    <div>alo</div>
+<!-- Section comments about SoundWave -->
+ <section class="w-full h-[350px] md:h-[450px] flex flex-col space-y-6 bg-[#1a1a1a]">
+    <div class="w-full h-[50px] flex items-center justify-start px-[clamp(1rem,5vw,2rem)]">
+        <h2 class="text-lg font-bold text-white sm:text-xl md:text-2xl">What people are saying about SoundWave</h2>
+    </div>
+
+    <!-- Container: Thêm id="scroll-container" và sửa lỗi snap-x -->
+    <div id="scroll-container" class="w-full flex-1 flex space-x-10 overflow-x-auto snap-x snap-mandatory no-scrollbar px-4 sm:space-x-20 md:space-x-40">
+        
+        <!-- Spacer giả ở đầu giúp thẻ đầu/cuối có thể căn giữa -->
+        <div class="shrink-0 w-[calc(50vw-170px)] sm:w-[calc(50vw-145px)] md:w-[calc(50vw-170px)]"></div>
+
+        <!-- Các thẻ comment: thêm class "comment-card" -->
+        <div class="comment-card snap-center w-[300px] h-full bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[250px] md:w-[300px]">
+            <div class="flex items-center space-x-4 mb-2">
+                <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=1">
+                <p class="text-white">Kelly S</p>
+                <div class="w-[1px] h-7 bg-white/30"></div>
+            </div>
+            <p class="text-white italic">"SoundWave has completely transformed the way I listen to music."</p>
+        </div>
+
+        <div class="comment-card snap-center w-[300px] h-full bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[250px] md:w-[300px]">
+            <div class="flex items-center space-x-4 mb-2">
+                <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=2">
+                <p class="text-white">David M</p>
+                <div class="w-[1px] h-7 bg-white/30"></div>
+            </div>
+            <p class="text-white italic">"I love how easy it is to discover new music on SoundWave."</p>
+        </div>
+
+        <div class="comment-card snap-center w-[300px] h-full bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[250px] md:w-[300px]">
+            <div class="flex items-center space-x-4 mb-2">
+                <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=3">
+                <p class="text-white">Sophia L</p>
+                <div class="w-[1px] h-7 bg-white/30"></div>
+            </div>
+            <p class="text-white italic">"The sound quality is incredible. I can't go back!"</p>
+        </div>
+
+        <!-- Spacer giả ở cuối -->
+        <div class="shrink-0 w-[calc(50vw-170px)] sm:w-[calc(50vw-145px)] md:w-[calc(50vw-170px)]"></div>
+    </div>
+
+    <!-- Dấu chấm: thêm class "dot" -->
+    <div class="flex justify-center space-x-2 py-4">
+        <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
+        <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
+        <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
+    </div>
 </section>
 
 <section class="h-screen bg-[#1E1F5A] flex items-center justify-center">
@@ -243,6 +349,51 @@ window.addEventListener('scroll', () => {
 const menuButton = document.getElementById('menu');
 menuButton.addEventListener('click', () => {
     menuButton.classList.toggle('rotate-90');
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("scroll-container");
+    const cards = document.querySelectorAll(".comment-card");
+    const dots = document.querySelectorAll(".dot");
+    // 1. Hàm cập nhật trạng thái dấu chấm dựa trên vị trí cuộn
+    const updateDots = () => {
+        let activeIndex = 0;
+        let minDistance = Infinity;
+
+        cards.forEach((card, index) => {
+            // Tính khoảng cách từ tâm thẻ đến tâm màn hình
+            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+            const scrollCenter = container.scrollLeft + container.offsetWidth / 2;
+            const distance = Math.abs(cardCenter - scrollCenter);
+
+            if (distance < minDistance) {
+                minDistance = distance;
+                activeIndex = index;
+            }
+        });
+
+        // Cập nhật opacity cho dấu chấm
+        dots.forEach((dot, index) => {
+            dot.style.opacity = index === activeIndex ? "1" : "0.3";
+        });
+    };
+
+    // 2. Tự động đưa thẻ số 2 (index 1) vào giữa khi vừa load trang
+    const centerCardTwo = () => {
+        const cardTwo = cards[1];
+        const offsetLeft = cardTwo.offsetLeft;
+        const containerWidth = container.offsetWidth;
+        const cardWidth = cardTwo.offsetWidth;
+
+        container.scrollLeft = offsetLeft - (containerWidth / 2) + (cardWidth / 2);
+        updateDots(); // Cập nhật dấu chấm ngay lập tức
+    };
+
+    // Lắng nghe sự kiện cuộn
+    container.addEventListener("scroll", updateDots);
+
+    // Chạy hàm căn giữa sau một khoảng nghỉ ngắn để trình duyệt render xong
+    setTimeout(centerCardTwo, 100);
 });
 </script>
 
