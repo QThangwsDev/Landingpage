@@ -16,14 +16,14 @@
     }
   </style>
 </head>
-<body class="m-0 p-0 min-h-[2000px] bg-gradient-to-b from-[#366F47] to-[#43FF7C] overscroll-y-none">
+<body class="m-0 p-0 min-h-[2000px] bg-gradient-to-b from-[#366F47] to-[#43FF7C] overscroll-y-none w-full overflow-x-hidden">
 
 <!-- Desktop Navigation -->
 <div class="hidden sm:flex fixed top-0 left-0 z-[60] items-center space-x-4 px-[clamp(1rem,5vw,2rem)] py-4 pointer-events-none">
     <div class="flex items-center space-x-4 pointer-events-auto">
-        <img src="https://imgs.search.brave.com/O-wyt2qfcyTO2cd7d0gU4WyeHhYt1RN1p6zWCnoMHRk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzU2L2Vj/Lzc2LzU2ZWM3NmZm/YmZkYzMxYTBmNTI1/NmI2OTBhMjIzMDAy/LmpwZw"
+        <img src="./img/logo.png"
              alt="Logo" 
-             class="w-10 h-10 rounded-full object-cover">
+             class="w-20 h-20 rounded-full object-cover">
         <span class="text-[20px] text-white font-bold">SoundWave</span>
     </div>
 </div>
@@ -38,8 +38,8 @@
 <header id="header" class="w-full h-20 z-50 px-[clamp(1rem,5vw,2rem)] py-4 flex items-center justify-center transition-colors duration-300 fixed top-0 left-0 sm:absolute sm:bg-transparent">
     <div class="flex w-full items-center justify-between sm:hidden">
         <div class="flex items-center space-x-2 p-2">
-            <img src="https://imgs.search.brave.com/O-wyt2qfcyTO2cd7d0gU4WyeHhYt1RN1p6zWCnoMHRk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzU2L2Vj/Lzc2LzU2ZWM3NmZm/YmZkYzMxYTBmNTI1/NmI2OTBhMjIzMDAy/LmpwZw"
-                  class="w-8 h-8 rounded-full object-cover">
+            <img src="./img/logo.png" alt="Logo"
+                  class="w-20 h-20 rounded-full object-cover">
             <span class="text-white font-bold">SoundWave</span>
         </div>
         <div class="px-2 space-x-2 flex items-center">
@@ -206,35 +206,37 @@
     
 </section>
 <!-- Section tiếp theo -->
-<section class="w-full h-[300px] bg-slate-600 flex flex-col px-[clamp(1rem,5vw,2rem)]
+<section class="w-full h-[350px] bg-slate-600 flex flex-col px-[clamp(1rem,5vw,2rem)] 
             sm:h-[400px]
             md:h-[500px]">
-    <div class="w-full h-[200px] mx-auto flex items-center justify-center text-center">
+    <div class="w-full h-[200px] mx-auto flex items-center justify-center text-center 
+                sm:h-[250px]
+                md:h-[300px]">
         <span class="text-bold-500 text-lg text-white 
                     sm:text-xl
                     md:text-2xl"> SoundWave offers free music,curated playlists can't find anywhere else, Or you can get our <p class="text-blue-400">Premium plan</p></span>
     </div>
     <!--Icon quyen loi cua premium-->
-    <div class=" w-full h-[200px] flex items-center justify-center space-x-10 px-4 mb-10
-                sm:space-x-20
-                md:space-x-40">
+    <div class=" w-full h-[300px] flex items-center justify-center space-x-5 
+                sm:space-x-20 sm:h-[200px]
+                md:space-x-40 md:h-[250px]">
                 <!--Item 1-->
-        <div class="w-[180px] h-[200px] rounded-lg  flex flex-col items-center justify-center padding-4
-                    sm:w-[220px] sm:h-[250px]
-                    md:w-[280px] md:h-[300px]">
+        <div class="w-[300px] h-[200px] rounded-lg   flex flex-col items-center justify-start padding-4
+                    sm:w-[400px] sm:h-[250px]
+                    md:w-[500px] md:h-[300px]">
             <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 object-cover flex items-center justify-center
                         sm:w-20 sm:h-20
                         md:w-24 md:h-24">
                 <i class="fa-solid fa-music text-2xl text-white"></i>
             </div>
-            <p class=" w-full stext-sm font-bold text-white
+                <p class="w-full stext-sm font-bold text-white
                     sm:text-lg
-                    md:text-xl">Enjoy amazing sound quakity on personalized music</p>
+                    md:text-xl">Enjoy amazing sound quality on personalized music</p>
         </div>
         <!--Item 2-->
-        <div class="w-[180px] h-[200px] rounded-lg  flex flex-col items-center justify-center
-                    sm:w-[220px] sm:h-[250px]
-                    md:w-[280px] md:h-[300px]">
+        <div class="w-[300px] h-[200px] rounded-lg  flex flex-col items-center justify-satart
+                    sm:w-[400px] sm:h-[250px]
+                    md:w-[500px] md:h-[300px]">
             <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 object-cover flex items-center justify-center
                         sm:w-20 sm:h-20
                         md:w-24 md:h-24">
@@ -245,9 +247,9 @@
                     md:text-xl">Dowload and play music for offline listening</p>
         </div>
         <!--Item 3-->
-        <div class="w-[180px] h-[200px]  rounded-lg  flex flex-col items-center justify-center
-                    sm:w-[220px] sm:h-[250px]
-                    md:w-[280px] md:h-[300px]">
+        <div class="w-[300px] h-[200px]  rounded-lg  flex flex-col items-center justify-start
+                    sm:w-[400px] sm:h-[250px]
+                    md:w-[500px] md:h-[300px]">
             <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 object-cover flex items-center justify-center
                         sm:w-20 sm:h-20
                         md:w-24 md:h-24">
@@ -261,19 +263,20 @@
 </section>
 
 <!-- Section comments about SoundWave -->
- <section class="w-full h-[350px] md:h-[450px] flex flex-col space-y-6 bg-[#1a1a1a]">
-    <div class="w-full h-[50px] flex items-center justify-start px-[clamp(1rem,5vw,2rem)]">
-        <h2 class="text-lg font-bold text-white sm:text-xl md:text-2xl">What people are saying about SoundWave</h2>
+ <section class="w-full h-[350px] flex flex-col space-y-6 bg-[#375AA9]">
+    <div class="w-full h-[50px] flex items-center justify-center px-[clamp(1rem,5vw,2rem)] pt-10
+                sm:h-[80px] sm:px-[clamp(1rem,10vw,3rem)] sm:justify-start
+                md:h-[100px]">
+        <h2 class="text-lg font-bold text-white sm:text-xl md:text-2xl">What people are saying about <spand class="text-[#00C4FF]">SoundWave</spand></h2>
     </div>
 
-    <!-- Container: Thêm id="scroll-container" và sửa lỗi snap-x -->
-    <div id="scroll-container" class="w-full flex-1 flex space-x-10 overflow-x-auto snap-x snap-mandatory no-scrollbar px-4 sm:space-x-20 md:space-x-40">
+    <!-- Container: Thêm id="scroll-container" -->
+    <div id="scroll-container" class="w-full h-[300px]flex-1 flex space-x-10 overflow-x-auto snap-x snap-mandatory no-scrollbar px-4 sm:space-x-20 md:space-x-40">
         
         <!-- Spacer giả ở đầu giúp thẻ đầu/cuối có thể căn giữa -->
         <div class="shrink-0 w-[calc(50vw-170px)] sm:w-[calc(50vw-145px)] md:w-[calc(50vw-170px)]"></div>
 
-        <!-- Các thẻ comment: thêm class "comment-card" -->
-        <div class="comment-card snap-center w-[300px] h-full bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[250px] md:w-[300px]">
+        <div class="comment-card snap-center w-[300px] h-[250px] bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[400px] md:w-[450px]">
             <div class="flex items-center space-x-4 mb-2">
                 <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=1">
                 <p class="text-white">Kelly S</p>
@@ -282,7 +285,7 @@
             <p class="text-white italic">"SoundWave has completely transformed the way I listen to music."</p>
         </div>
 
-        <div class="comment-card snap-center w-[300px] h-full bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[250px] md:w-[300px]">
+        <div class="comment-card snap-center w-[300px] h-[250px] bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[400px] md:w-[450px]">
             <div class="flex items-center space-x-4 mb-2">
                 <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=2">
                 <p class="text-white">David M</p>
@@ -291,7 +294,7 @@
             <p class="text-white italic">"I love how easy it is to discover new music on SoundWave."</p>
         </div>
 
-        <div class="comment-card snap-center w-[300px] h-full bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[250px] md:w-[300px]">
+        <div class="comment-card snap-center w-[300px] h-[250px] bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[400px] md:w-[450px]">
             <div class="flex items-center space-x-4 mb-2">
                 <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=3">
                 <p class="text-white">Sophia L</p>
@@ -305,16 +308,76 @@
     </div>
 
     <!-- Dấu chấm: thêm class "dot" -->
-    <div class="flex justify-center space-x-2 py-4">
+    <div class="flex justify-center space-x-2 py-2">
         <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
         <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
         <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
     </div>
 </section>
 
-<section class="h-screen bg-[#1E1F5A] flex items-center justify-center">
-    <h2 class="text-4xl font-bold text-white">Join the community</h2>
+<!-- Section Download for ggplay appstore and window -->
+<section class="h-[400px] bg-[#1E1F5A] flex items-center justify-center relative px-20 overflow-hidden
+            sm:h-[500px]
+            md:h-[600px]">
+    <!-- Hình tròn nền -->
+    <div class="h-[300px] w-[300px] rounded-full absolute top-60vh right-[-100px] bg-gradient-to-b from-green-600 to-black opacity-90 blur-sm z-0
+                sm:w-[400px] sm:h-[400px] sm:top-40vh sm:right-[150px] "></div>
+    <div class="h-[150px] w-[150px] rounded-full absolute top-10 right-[150px] bg-gradient-to-b from-green-600 to-black opacity-90 blur-sm z-0
+                sm:w-[350px] sm:h-[350px]"></div>
+    <!-- Container nội dung -->
+    <div class="flex flex-col items-center justify-center text-center px-[clamp(1rem,5vw,2rem)] z-10">
+        <h2 class="text-xl font-bold text-white mb-3
+                    sm:text-2xl
+                    md:text-3xl
+                    lg:text-4xl">Get <span class="text-[#00C4FF]"> SoundWave</span> on your device</h2>
+        <p class="text-md text-gray-300 mb-8 max-w-[400px] 
+                sm:max-w-md sm:text-lg
+                md:max-w-lg md:text-xl">
+            Download SoundWave for free on Google Play, App Store, and Windows. Enjoy your music anywhere!
+        </p>
+        <div class="flex space-x-5 mx-[clamp(1rem,5vw,2rem)] 
+                    sm:space-x-10
+                    md:space-x-20">
+            <button class="w-[120px] h-[50px] rounded-md flex items-center justify-center space-x-2  bg-black text-white  shadow-lg hover:bg-slate-600 transition
+                            sm:w-[140px] sm:h-[60px]
+                            md:w-[160px] md:h-[70px]">
+                <i class="fa-brands fa-google-play text-xl
+                        sm:text-2xl
+                        md:text-3xl"></i>
+                <span class="text-sm font-bold
+                            sm:text-md
+                            md:text-lg
+                            lg:text-xl">Google Play</span>
+            </button>
+            <button class="w-[120px] h-[50px] rounded-md flex items-center justify-center space-x-2  bg-black text-white  shadow-lg hover:bg-slate-600 transition
+                            sm:w-[140px] sm:h-[60px]
+                            md:w-[160px] md:h-[70px]">
+                <i class="fa-brands fa-app-store-ios text-xl
+                        sm:text-2xl
+                        md:text-3xl"></i>
+                <span class="text-sm font-bold
+                            sm:text-md
+                            md:text-lg
+                            lg:text-xl">App Store</span>
+            </button>
+            <button class="w-[120px] h-[50px] rounded-md flex items-center justify-center space-x-2 bg-black text-white shadow-lg hover:bg-slate-600 transition
+                            sm:w-[140px] sm:h-[60px]
+                            md:w-[160px] md:h-[70px]">
+                <i class="fa-solid fa-desktop text-xl"></i>
+                <span class=" text-sm font-bold
+                            sm:text-md
+                            md:text-lg
+                            lg:text-xl">Windows</span>
+            </button>
+
+        </div>
+    </div>
+    
 </section>
+<!-- Footer -->
+<footer class="w-full py-6 bg-[#1E1F5A] flex items-center justify-center">
+    <p class="text-sm text-gray-400">&copy; 2026 SoundWave. All rights reserved.</p>
+</footer>
 
 <script>
 // 1. Xử lý Header khi cuộn (Mobile)
@@ -322,10 +385,10 @@ const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
     if(window.innerWidth <= 640) {
         if (window.scrollY > 50) {
-            header.classList.add('bg-[#1F502E]', 'shadow-lg');
+            header.classList.add('bg-black', 'shadow-md');
             header.classList.remove('bg-transparent');
         } else {
-            header.classList.remove('bg-[#1F502E]', 'shadow-lg');
+            header.classList.remove('bg-black', 'shadow-md');
             header.classList.add('bg-transparent');
         }
     }
@@ -389,7 +452,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateDots(); // Cập nhật dấu chấm ngay lập tức
     };
 
-    // Lắng nghe sự kiện cuộn
+    // Lắng nghe sự kiện cuộnS
     container.addEventListener("scroll", updateDots);
 
     // Chạy hàm căn giữa sau một khoảng nghỉ ngắn để trình duyệt render xong
