@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>logic</title>
      <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
 </head>
-<body class="bg-green-300">
- <!-- Container chính: dùng overflow-x-auto để có thể vuốt trên điện thoại -->
-<!-- snap-x snap-mandatory giúp khi vuốt, thẻ tự động "híEt" vào giữa -->
+<body class=" bg-slate-400">
+     <!-- Container chính: dùng overflow-x-auto để có thể vuốt trên điện thoại -->
+<!-- snap-x snap-mandatory giúp khi vuốt, thẻ tự động "hít" vào giữa -->
 <div id="container" class="w-full py-10 overflow-x-auto flex snap-x snap-mandatory no-scrollbar ">
     
     <!-- Spacer giả ở đầu để thẻ đầu tiên có thể nằm giữa màn hình -->
@@ -60,80 +60,46 @@
     <div class="dot w-2 h-2 bg-white rounded-full opacity-30"></div>
     <div class="dot w-2 h-2 bg-white rounded-full opacity-30"></div>
 </div>
-
-<style>
-    /* Ẩn thanh cuộn để nhìn đẹp hơn */
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-</style>
-
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("container");
-    const dots = document.querySelectorAll('.dot');
-    
-    // 1. NHÂN BẢN THẺ ĐỂ TẠO HIỆU ỨNG VÔ TẬN
-    const cards = Array.from(document.querySelectorAll(".card"));
-    const firstClone = cards[0].cloneNode(true);
-    const lastClone = cards[cards.length - 1].cloneNode(true);
+    document.addEventListener("DOMContentLoaded", ()=>{
+        const container = document.getElementById("container");
+        const cards = document.querySelectorAll(".card");
+        const dots = document.querySelectorAll(".dot");
+        
+        const updateDots = () => {
+            let activeIndex = 0;
+            let minDistance = Infinity;
+            const scrollCenter = container.scrollLeft + container.offsetWidth /2 ;
+            cards.forEach((card,index)=>{
+                const cardCenter = card.offsetLeft + card.offsetWidth / 2 ;
+                const distance = Math.abs(cardCenter - scrollCenter);
 
-    container.appendChild(firstClone); // Thêm bản sao thẻ 1 vào cuối
-    container.insertBefore(lastClone, cards[0]); // Thêm bản sao thẻ 3 vào đầu
+                if(distance < minDistance){
+                    minDistance = distance;
+                    activeIndex = index;
+                }
+            });
+            
+            dots.forEach((dot,index) =>{
+                dot.style.opacity = index === activeIndex ? "1" : "0.3";
+            });
+        };
+        
+        const cardTwoCenter = () => {
+            const cardTwo = cards[1]// trong index 1= vat thu 2
+            const offsetLeft = cardTwo.offsetLeft;
+            const containerWidth = container.offsetWidth;
+            const cardWidth = cardTwo.offsetWidth;
+            container.scrollLeft = offsetLeft - (containerWidth / 2) + (cardWidth / 2);
+            updateDots();
+        };
 
-    const allCards = document.querySelectorAll(".card"); // Lấy lại danh sách bao gồm bản sao
+        container.addEventListener("scroll", updateDots);
 
-    const updateDots = () => {
-        let activeIndex = 0;
-        let minDistance = Infinity;
+        setTimeout(cardTwoCenter,100);
+    });
 
-        // Chỉ tính toán dựa trên 3 thẻ gốc (bỏ qua 2 bản sao ở 2 đầu)
-        cards.forEach((card, index) => {
-            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-            const scrollCenter = container.scrollLeft + container.offsetWidth / 2;
-            const distance = Math.abs(cardCenter - scrollCenter);
-
-            if (distance < minDistance) {
-                minDistance = distance;
-                activeIndex = index;
-            }
-        });
-
-        dots.forEach((dot, index) => {
-            dot.style.opacity = index === activeIndex ? "1" : "0.3";
-        });
-    };
-
-    // 2. XỬ LÝ NHẢY VỊ TRÍ KHI ĐẾN GIỚI HẠN (VÔ TẬN)
-    const handleInfiniteScroll = () => {
-        const scrollLeft = container.scrollLeft;
-        const scrollWidth = container.scrollWidth;
-        const containerWidth = container.offsetWidth;
-
-        // Nếu cuộn về sát đầu (đang ở bản sao của thẻ 3)
-        if (scrollLeft <= 5) {
-            container.scrollLeft = scrollWidth - (2 * containerWidth);
-        } 
-        // Nếu cuộn về sát cuối (đang ở bản sao của thẻ 1)
-        else if (scrollLeft + containerWidth >= scrollWidth - 5) {
-            container.scrollLeft = containerWidth;
-        }
-
-        updateDots();
-    };
-
-    // 3. KHỞI TẠO VỊ TRÍ BAN ĐẦU (Thẻ số 2 nằm giữa)
-    const initSlider = () => {
-        const cardTwo = cards[1]; 
-        const centerOffset = cardTwo.offsetLeft - (container.offsetWidth / 2) + (cardTwo.offsetWidth / 2);
-        container.scrollLeft = centerOffset;
-        updateDots();
-    };
-
-    container.addEventListener("scroll", handleInfiniteScroll);
-
-    // Đợi render xong rồi mới khởi tạo
-    setTimeout(initSlider, 100);
-});
 </script>
+    
 </body>
 </html>
