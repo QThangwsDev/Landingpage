@@ -66,37 +66,41 @@
         const cards = document.querySelectorAll(".card");
         const dots = document.querySelectorAll(".dot");
         
-        const updateDots = () => {
-            let activeIndex = 0;
+        /// function de cap nhan dot hien thi theo card nao dang nam o giua man hinh
+        const updateDot = () =>{
+            let activeIndex = 0 ;
             let minDistance = Infinity;
-            const scrollCenter = container.scrollLeft + container.offsetWidth /2 ;
-            cards.forEach((card,index)=>{
+            const scrollCenter = container.scrollLeft + container.offsetWidth / 2;
+            cards.forEach((card,index) => {
                 const cardCenter = card.offsetLeft + card.offsetWidth / 2 ;
                 const distance = Math.abs(cardCenter - scrollCenter);
-
+                // check xem distacne cua the nay co nho hon mindistance vua tim dc cua the truoc khong
                 if(distance < minDistance){
+                    // neu dung thi se gan index cua the nay vao achive index va set min distance moi de check the sau
                     minDistance = distance;
-                    activeIndex = index;
-                }
+                    activeIndex = index; 
+                };
             });
-            
-            dots.forEach((dot,index) =>{
-                dot.style.opacity = index === activeIndex ? "1" : "0.3";
+
+            // duyet qua cac dot de doi mau de bien dien dot nao dang hien
+            dots.forEach((dot,index) => {
+                dot.style.opacity = index === activeIndex ? "1": "0.3";
             });
-        };
-        
-        const cardTwoCenter = () => {
-            const cardTwo = cards[1]// trong index 1= vat thu 2
-            const offsetLeft = cardTwo.offsetLeft;
-            const containerWidth = container.offsetWidth;
-            const cardWidth = cardTwo.offsetWidth;
-            container.scrollLeft = offsetLeft - (containerWidth / 2) + (cardWidth / 2);
-            updateDots();
         };
 
-        container.addEventListener("scroll", updateDots);
+        // function de khi vua vao tghi card 2 luon o giua man hinh
+
+        const cardTwoCenter = () => {
+            const cardTwo = cards[1] // index 1 tuong ung voi the thu 2 vi index bat dau tu 0
+            container.scrollLeft = cardTwo.offsetLeft - container.offsetWidth /2 + cardTwo.offsetWidth /2;
+            /// goi ham upade dot
+            updateDot();
+        };
+
+        container.addEventListener("scroll", updateDot);
 
         setTimeout(cardTwoCenter,100);
+    
     });
 
 </script>

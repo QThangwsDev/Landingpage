@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Infinite Slider Hoàn Hảo</title>
 </head>
-<body class="bg-green-300">
- <!-- Container chính: dùng overflow-x-auto để có thể vuốt trên điện thoại -->
-<!-- snap-x snap-mandatory giúp khi vuốt, thẻ tự động "híEt" vào giữa -->
-<div id="container" class="w-full py-10 overflow-x-auto flex snap-x snap-mandatory no-scrollbar ">
-    
-    <!-- Spacer giả ở đầu để thẻ đầu tiên có thể nằm giữa màn hình -->
-    <div class="shrink-0 w-[15vw]"></div>
+<body class="bg-green-300 flex flex-col justify-center min-h-screen">
 
+<!-- 
+  Container chính: 
+  - Thay spacer bằng px-[15vw] (tạo khoảng trống 2 đầu để thẻ giữa cân bằng)
+  - Thêm scroll-smooth để vuốt mượt, nhưng chúng ta sẽ tắt bằng JS khi nhảy vòng lặp
+-->
+<div id="container" class="w-full py-10 overflow-x-auto flex snap-x snap-mandatory no-scrollbar px-[15vw] scroll-smooth">
+    
     <!-- Thẻ 1 -->
     <div class="card snap-center shrink-0 w-[70vw] sm:w-[400px] bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-xl mx-4">
         <div class="flex items-center space-x-4 mb-4">
@@ -50,46 +51,52 @@
         <p class="text-gray-300 text-xs sm:text-sm italic line-clamp-3">"Thích nhất tính năng gợi ý nhạc của SoundWave, đúng gu mình luôn. Rất đáng trải nghiệm!"</p>
     </div>
 
-    <!-- Spacer giả ở cuối -->
-    <div class="shrink-0 w-[15vw]"></div>
 </div>
 
 <!-- 3 Dấu chấm -->
 <div class="flex justify-center space-x-2 mt-4">
-    <div class=" dot w-2 h-2 bg-white rounded-full opacity-100"></div>
-    <div class="dot w-2 h-2 bg-white rounded-full opacity-30"></div>
-    <div class="dot w-2 h-2 bg-white rounded-full opacity-30"></div>
+    <div class="dot w-2 h-2 bg-white rounded-full opacity-100 transition-opacity duration-300"></div>
+    <div class="dot w-2 h-2 bg-white rounded-full opacity-30 transition-opacity duration-300"></div>
+    <div class="dot w-2 h-2 bg-white rounded-full opacity-30 transition-opacity duration-300"></div>
 </div>
 
 <style>
-    /* Ẩn thanh cuộn để nhìn đẹp hơn */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("container");
     const dots = document.querySelectorAll('.dot');
     
-    // 1. NHÂN BẢN THẺ ĐỂ TẠO HIỆU ỨNG VÔ TẬN
-    const cards = Array.from(document.querySelectorAll(".card"));
-    const firstClone = cards[0].cloneNode(true);
-    const lastClone = cards[cards.length - 1].cloneNode(true);
+    // 1. NHÂN BẢN VÀ THIẾT LẬP DOM
+    const originalCards = Array.from(document.querySelectorAll(".card"));
+    
+    const firstClone = originalCards[0].cloneNode(true);
+    const lastClone = originalCards[originalCards.length - 1].cloneNode(true);
 
-    container.appendChild(firstClone); // Thêm bản sao thẻ 1 vào cuối
-    container.insertBefore(lastClone, cards[0]); // Thêm bản sao thẻ 3 vào đầu
+    // Đánh dấu thẻ clone để không tính nhầm dot
+    firstClone.classList.add('is-clone');
+    lastClone.classList.add('is-clone');
 
-    const allCards = document.querySelectorAll(".card"); // Lấy lại danh sách bao gồm bản sao
+    container.appendChild(firstClone); 
+    container.insertBefore(lastClone, originalCards[0]); 
 
+    // Hàm tiện ích hỗ trợ tính scrollLeft để đưa 1 phần tử vào giữa container
+    const getCenterScrollLeft = (element) => {
+        return element.offsetLeft - (container.offsetWidth / 2) + (element.offsetWidth / 2);
+    };
+
+    // 2. CẬP NHẬT CHẤM TRÒN (DOTS)
     const updateDots = () => {
         let activeIndex = 0;
         let minDistance = Infinity;
+        const scrollCenter = container.scrollLeft + container.offsetWidth / 2;
 
-        // Chỉ tính toán dựa trên 3 thẻ gốc (bỏ qua 2 bản sao ở 2 đầu)
-        cards.forEach((card, index) => {
+        // Chỉ duyệt và tính khoảng cách dựa trên các thẻ gốc ban đầu
+        originalCards.forEach((card, index) => {
             const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-            const scrollCenter = container.scrollLeft + container.offsetWidth / 2;
             const distance = Math.abs(cardCenter - scrollCenter);
 
             if (distance < minDistance) {
@@ -103,36 +110,64 @@
         });
     };
 
-    // 2. XỬ LÝ NHẢY VỊ TRÍ KHI ĐẾN GIỚI HẠN (VÔ TẬN)
-    const handleInfiniteScroll = () => {
-        const scrollLeft = container.scrollLeft;
-        const scrollWidth = container.scrollWidth;
-        const containerWidth = container.offsetWidth;
+    // 3. XỬ LÝ DỊCH CHUYỂN VÔ TẬN BẤT CHẤP RESPONSIVE
+    let isJumping = false; // Biến cờ ngăn chặn xung đột sự kiện cuộn liên tục
 
-        // Nếu cuộn về sát đầu (đang ở bản sao của thẻ 3)
-        if (scrollLeft <= 5) {
-            container.scrollLeft = scrollWidth - (2 * containerWidth);
+    const handleInfiniteScroll = () => {
+        if (isJumping) return;
+
+        const scrollLeft = container.scrollLeft;
+        
+        // Vị trí kích hoạt nhảy: Lấy điểm chính giữa của thẻ clone làm mốc
+        const firstCloneCenter = getCenterScrollLeft(firstClone);
+        const lastCloneCenter = getCenterScrollLeft(lastClone);
+
+        // Trường hợp A: Người dùng cuộn quá lề trái (vượt qua tâm thẻ Clone 3)
+        if (scrollLeft <= lastCloneCenter + 10) { 
+            isJumping = true;
+            
+            // Tắt toàn bộ tính năng hít CSS Snap và hiệu ứng cuộn mượt để nhảy "tàng hình"
+            container.classList.remove('snap-x', 'scroll-smooth');
+            
+            // Ép nhảy thẳng về vị trí của thẻ 3 GỐC
+            container.scrollLeft = getCenterScrollLeft(originalCards[originalCards.length - 1]);
+            
+            // Khôi phục lại trạng thái ban đầu sau khi nhảy xong
+            setTimeout(() => {
+                container.classList.add('snap-x', 'scroll-smooth');
+                isJumping = false;
+            }, 50);
         } 
-        // Nếu cuộn về sát cuối (đang ở bản sao của thẻ 1)
-        else if (scrollLeft + containerWidth >= scrollWidth - 5) {
-            container.scrollLeft = containerWidth;
+        // Trường hợp B: Người dùng cuộn quá lề phải (vượt qua tâm thẻ Clone 1)
+        else if (scrollLeft >= firstCloneCenter - 10) {
+            isJumping = true;
+            container.classList.remove('snap-x', 'scroll-smooth');
+            
+            // Ép nhảy thẳng về vị trí của thẻ 1 GỐC
+            container.scrollLeft = getCenterScrollLeft(originalCards[0]);
+            
+            setTimeout(() => {
+                container.classList.add('snap-x', 'scroll-smooth');
+                isJumping = false;
+            }, 50);
         }
 
         updateDots();
     };
 
-    // 3. KHỞI TẠO VỊ TRÍ BAN ĐẦU (Thẻ số 2 nằm giữa)
+    // 4. KHỞI TẠO BAN ĐẦU
     const initSlider = () => {
-        const cardTwo = cards[1]; 
-        const centerOffset = cardTwo.offsetLeft - (container.offsetWidth / 2) + (cardTwo.offsetWidth / 2);
-        container.scrollLeft = centerOffset;
+        // Vào trang một cái là đưa thẻ số 2 gốc ra giữa liền
+        container.scrollLeft = getCenterScrollLeft(originalCards[1]);
         updateDots();
     };
 
     container.addEventListener("scroll", handleInfiniteScroll);
+    
+    // Tự động tính toán lại vị trí chuẩn xác nếu người dùng xoay màn hình điện thoại hoặc resize trình duyệt
+    window.addEventListener("resize", initSlider);
 
-    // Đợi render xong rồi mới khởi tạo
-    setTimeout(initSlider, 100);
+    setTimeout(initSlider, 50);
 });
 </script>
 </body>

@@ -393,7 +393,7 @@
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
     if(window.innerWidth <= 640) {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 10) {
             header.classList.add('bg-black', 'shadow-md');
             header.classList.remove('bg-transparent');
         } else {

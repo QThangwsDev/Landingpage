@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Form login</title>
+</head>
+<body>
+    <div id="containerForm" class="w-full h-full bg-slate-500">
+        <div class="w-[400px] h-[500px] bg-slate-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg">
+            <h1 class="text-center text-3xl font-bold mt-10">log in</h1>
+            <form action="" class="flex flex-col items-center mt-10 space-y-10">
+                <input id="username" type="text" placeholder="Tên đăng nhập" class="w-[80%] p-2 mb-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input id="password" type="password" placeholder="Mật khẩu" class="w-[80%] p-2 mb-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="flex items-center justify-start w-[80%]">
+                    <input id="remember" type="checkbox" class="mr-2">
+                    <label for="remember" class="text-sm text-gray-600">Ghi nhớ đăng nhập</label>
+                </div>
+                <button type="submit" class="w-[80%] p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300">Đăng Nhập</button>
+            </form>
+            <div class="flex justify-center mt-4">
+                <a href="#" class="text-sm text-blue-500 hover:underline">Quên mật khẩu?</a>
+                <span class="mx-2 text-gray-500">|</span>
+                <a href="#" class="text-sm text-blue-500 hover:underline">Đăng ký</a>
+            </div>
+        </div>
+    </div>
+     <!--div de hien thong tin sau khi dang nhap-->
+        <div id="welcomeMessage" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-green-300 p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Chào mừng, <span id="userDisplay"></span>!</h2>
+            <p class="text-gray-700">Bạn đã đăng nhập thành công.</p>
+        </div>
+    <script>
+        const db = [
+            { username: "user1", password: "pass1", email: "huki@gmail.com", role: "admin" },
+            { username: "user2", password: "pass2", email: "gawrug@gmail.com", role: "user" }
+        ];
+   //remember me
+        const rememberCheckbox = document.getElementById("remember");
+        const form = document.querySelector('form');
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            if(!username || !password) {
+                    alert("Please fill in all fields!");
+                return;
+            }
+            if (rememberCheckbox.checked) {
+                    localStorage.setItem("rememberedUsername", username);
+            } else {
+                localStorage.removeItem("rememberedUsername");
+            }
+
+
+           const user = db.find(u => u.username === username && u.password === password);
+            if (user) {
+                // Hiển thị thông báo chào mừng
+                alert("Đăng nhập thành công!");
+                const containerForm = document.getElementById("containerForm");
+                containerForm.classList.add("hidden"); // Ẩn form đăng nhập
+                // check role de hien de dang nhap admin hay user
+                if (user.role === "admin") {    
+                    document.getElementById("userDisplay").innerHTML = `
+                    <span class="text-2xl text-red-800 font-bold">${user.username}</span>
+                    <p class="text-sm text-gray-500">${user.email}+" voi role:"${user.role}</p>
+                    <p class="text-sm mt-2 text-blue-600 font-medium">
+                        ${rememberCheckbox.checked ? "Session làm việc đã được lưu" : "Session của bạn đã không được lưu"}
+                    </p>
+                `;
+                } else {
+                    document.getElementById("userDisplay").innerHTML = `
+                    <span class="text-2xl text-green-800 font-bold">${user.username}</span>
+                    <p class="text-sm text-gray-500">${user.email} voi role: ${user.role}</p>
+                    <p class="text-sm mt-2 text-blue-600 font-medium">
+                        ${rememberCheckbox.checked ? "Session làm việc đã được lưu" : "Session của bạn đã không được lưu"}
+                    </p>
+                `;
+                }
+                document.getElementById("welcomeMessage").classList.remove("hidden");
+            } else {
+                alert("Tên đăng nhập hoặc mật khẩu không đúng!");
+            }
+        });
+    </script>
+</body>
+</html>
