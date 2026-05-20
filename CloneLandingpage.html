@@ -16,10 +16,53 @@
     }
   </style>
 </head>
-<body class="m-0 p-0 min-h-[2000px] bg-gradient-to-b from-[#366F47] to-[#43FF7C] overscroll-y-none w-full overflow-x-hidden">
+<body class="m-0 p-0 min-h-[2000px] bg-gradient-to-b from-[#366F47] to-[#43FF7C] overscroll-y-none w-full overflow-x-hidden realative">
+    <!-- modal khi bam vao login -->
+     <div class="w-full h-full bg-slate-500 z-[70]  absolute top-0 left-0  flex justify-center items-center flex-col" id="modal">
+        <!-- Loi chao dang nhap-->
+         <div class="w-[300px] h-[100px] bg-gradient-to-b from-[#4B2B95] to-[#1DA9EF] p-3 flex flex-col items-center justify-center
+                    sm:w-[400px] sm:h-[120px]">
+            <h2 class="text-white text-lg font-light font-serif">Welcome Back</h2>
+            <p class="text-white">Hey! Good to see you again</p>
+         </div>
+        <div class="w-[300px] h-[350px] bg-white flex flex-col justify-center items-center p-2 space-y-2
+                    sm:w-[400px] sm:h-[400px] sm:p-4
+                    md:px-10">
+            <h2 class="text-3xl font-medium font-serif mb-[30px]">User Login</h2>
+            <form action="" class="flex w-full flex-col justify-start items-center space-y-5 px-2">
+                <!-- username -->
+                <div class="flex items-center w-full h-[35px] text-white rounded-full bg-gray-400 px-3 space-x-2 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
+                    <i class="fa-solid fa-user  "></i>
+                    <input type="text" placeholder="Username" class="flex-1 h-full bg-transparent focus:outline-none placeholder:text-white">
+                </div>
+                <!-- password -->
+                <div class="flex items-center w-full h-[35px] text-white rounded-full bg-gray-400 px-3 space-x-2 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Password" class="flex-1 h-full bg-transparent focus:outline-none placeholder:text-white">
+                </div>
+
+                <!-- remember me && forget passsword-->
+                 <div class=" flex justify-between text-sm w-full">
+                    <div class="flex items-center space-x-2">
+                        <input id="remember" type="checkbox" class="w-3 h-3">
+                        <label for="remember" class="text-sm text-gray-600">Remember me</label>
+                    </div>
+                    <!-- forget password -->
+                     <div>
+                        <a href="#" class="text-sm text-gray-600 hover:underline">Forget password?</a>
+                     </div>
+                    
+                 </div>
+                 <!-- button login -->
+                <button class="w-full h-[35px] rounded-full bg-gradient-to-r from-[#4B2B95] to-[#5A65F6] text-white font-bold hover:opacity-90 transition-colors duration-300
+                                sm:">Log In</button>
+            </form>
+        </div>
+    
+     </div>
 
 <!-- Desktop Navigation -->
-<div class="hidden sm:flex fixed top-0 left-0 z-[60] items-center space-x-4 px-[clamp(1rem,5vw,2rem)] py-4 pointer-events-none">
+<div class="hidden sm:flex fixed z-[60] items-center space-x-4 px-[clamp(1rem,5vw,2rem)] py-4 pointer-events-none">
     <div class="flex items-center space-x-4 pointer-events-auto">
         <img src="./img/logo.png"
              alt="Logo" 
@@ -58,7 +101,7 @@
 </header>
 
 <!-- Hero Section -->
-<section class="h-screen bg-[#1E1F5A] px-[clamp(1rem,5vw,2rem)] flex items-center justify-center overflow-hidden relative">
+<section class="h-screen bg-[#1E1F5A] px-5 flex items-center justify-center overflow-hidden relative pt-20">
     <!-- Hình tròn: Dùng biến CSS để không làm hỏng responsive của Tailwind -->
     <div id="obj1" class="absolute rounded-full bg-gradient-to-b from-[#15F099] to-[#0069A6] 
                 z-0 opacity-80 blur-sm
@@ -94,7 +137,7 @@
 </section>
 
 <!-- Section tiếp theo -->
-<section class="min-h-screen bg-[#5D77CE] flex flex-col px-[clamp(1rem,5vw,2rem)] py-20 relative">
+<section class="min-h-screen bg-[#5D77CE] flex flex-col px-5 py-20 relative">
     
     <div class="w-full mb-10 ">
         <h2 class="text-lg font-bold md:text-xl text-gray-300 max-w-[400px] sm:max-w-md">
@@ -207,7 +250,7 @@
     
 </section>
 <!-- Section tiếp theo -->
-<section class="w-full h-[350px] bg-slate-600 flex flex-col px-[clamp(1rem,5vw,2rem)] 
+<section class="w-full h-[350px] bg-slate-600 flex flex-col px-5 
             sm:h-[400px]
             md:h-[500px]">
     <div class="w-full h-[200px] mx-auto flex items-center justify-center text-center 
@@ -265,8 +308,8 @@
 
 <!-- Section comments about SoundWave -->
  <section class="w-full h-[350px] flex flex-col space-y-6 bg-[#375AA9]">
-    <div class="w-full h-[50px] flex items-center justify-center px-[clamp(1rem,5vw,2rem)] pt-10
-                sm:h-[80px] sm:px-[clamp(1rem,10vw,3rem)] sm:justify-start
+    <div class="w-full h-[50px] flex items-center justify-center px-5 pt-10
+                sm:h-[80px] sm:px-10 sm:justify-start
                 md:h-[100px]">
         <h2 class="text-lg font-bold text-white sm:text-xl md:text-2xl">What people are saying about <spand class="text-[#00C4FF]">SoundWave</spand></h2>
     </div>
