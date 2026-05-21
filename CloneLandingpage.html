@@ -18,499 +18,523 @@
 </head>
 <body class="m-0 p-0 min-h-[2000px] bg-gradient-to-b from-[#366F47] to-[#43FF7C] overscroll-y-none w-full overflow-x-hidden realative">
     <!-- modal khi bam vao login -->
-     <div class="w-full h-full bg-slate-500 z-[70]  absolute top-0 left-0  flex justify-center items-center flex-col" id="modal">
-        <!-- Loi chao dang nhap-->
-         <div class="w-[300px] h-[100px] bg-gradient-to-b from-[#4B2B95] to-[#1DA9EF] p-3 flex flex-col items-center justify-center
-                    sm:w-[400px] sm:h-[120px]">
-            <h2 class="text-white text-lg font-light font-serif">Welcome Back</h2>
-            <p class="text-white">Hey! Good to see you again</p>
-         </div>
-        <div class="w-[300px] h-[350px] bg-white flex flex-col justify-center items-center p-2 space-y-2
-                    sm:w-[400px] sm:h-[400px] sm:p-4
-                    md:px-10">
-            <h2 class="text-3xl font-medium font-serif mb-[30px]">User Login</h2>
-            <form action="" class="flex w-full flex-col justify-start items-center space-y-5 px-2">
-                <!-- username -->
-                <div class="flex items-center w-full h-[35px] text-white rounded-full bg-gray-400 px-3 space-x-2 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
-                    <i class="fa-solid fa-user  "></i>
-                    <input type="text" placeholder="Username" class="flex-1 h-full bg-transparent focus:outline-none placeholder:text-white">
-                </div>
-                <!-- password -->
-                <div class="flex items-center w-full h-[35px] text-white rounded-full bg-gray-400 px-3 space-x-2 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" placeholder="Password" class="flex-1 h-full bg-transparent focus:outline-none placeholder:text-white">
+    <dialog id="modal" class="p-0 bg-transparent overflow-visible focus:outline-none backdrop:bg-slate-500/80 backdrop:backdrop-blur-sm">
+
+            <div class="flex justify-center items-center flex-col">
+                <!-- Lời chào đăng nhập (Giữ nguyên class của bạn) -->
+                <div class="w-[300px] h-[100px] bg-gradient-to-b from-[#4B2B95] to-[#1DA9EF] p-3 flex flex-col items-center justify-center
+                            sm:w-[400px] sm:h-[120px]">
+                    <h2 class="text-white text-lg font-light font-serif">Welcome Back</h2>
+                    <p class="text-white">Hey! Good to see you again</p>
                 </div>
 
-                <!-- remember me && forget passsword-->
-                 <div class=" flex justify-between text-sm w-full">
-                    <div class="flex items-center space-x-2">
-                        <input id="remember" type="checkbox" class="w-3 h-3">
-                        <label for="remember" class="text-sm text-gray-600">Remember me</label>
-                    </div>
-                    <!-- forget password -->
-                     <div>
-                        <a href="#" class="text-sm text-gray-600 hover:underline">Forget password?</a>
-                     </div>
+                <!-- Khung Form trắng (Giữ nguyên class của bạn, thêm nút X đóng nhanh nếu muốn) -->
+                <div class="w-[300px] h-[300px] bg-white flex flex-col justify-center items-center p-2 space-y-2 relative
+                            sm:w-[400px] sm:h-[350px] sm:p-4
+                            md:px-10">
+                    <form method="dialog" class="absolute top-3 right-4">
+                        <button class="text-gray-400 hover:text-gray-600 font-bold text-lg focus:outline-none">✕</button>
+                    </form>
+                    <h2 class="text-3xl font-medium font-serif mb-[30px]">User Login</h2>
                     
-                 </div>
-                 <!-- button login -->
-                <button class="w-full h-[35px] rounded-full bg-gradient-to-r from-[#4B2B95] to-[#5A65F6] text-white font-bold hover:opacity-90 transition-colors duration-300
-                                sm:">Log In</button>
-            </form>
+                    <form action="" class="flex w-full flex-col justify-start items-center space-y-5 px-2">
+                        <!-- username (Giữ nguyên class của bạn) -->
+                        <div class="flex items-center w-full h-[35px] text-white rounded-full bg-gray-400 px-3 space-x-2 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" placeholder="Username" class="flex-1 h-full bg-transparent focus:outline-none placeholder:text-white">
+                        </div>
+
+                        <!-- password (Giữ nguyên class của bạn) -->
+                        <div class="flex items-center w-full h-[35px] text-white rounded-full bg-gray-400 px-3 space-x-2 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" placeholder="Password" class="flex-1 h-full bg-transparent focus:outline-none placeholder:text-white">
+                        </div>
+
+                        <!-- remember me && forget password (Giữ nguyên class của bạn, thêm cursor-pointer cho label) -->
+                        <div class="flex justify-between text-sm w-full">
+                            <div class="flex items-center space-x-2">
+                                <input id="remember" type="checkbox" class="w-3 h-3">
+                                <label for="remember" class="text-sm text-gray-600 cursor-pointer select-none">Remember me</label>
+                            </div>
+                            <!-- forget password -->
+                            <div>
+                                <a href="#" class="text-sm text-gray-600 hover:underline">Forget password?</a>
+                            </div>
+                        </div>
+
+                        <!-- button login (Giữ nguyên class của bạn, xóa chữ sm: bị thừa ở cuối) -->
+                        <button type="submit" class="w-full h-[35px] rounded-full bg-gradient-to-r from-[#4B2B95] to-[#5A65F6] text-white font-bold hover:opacity-90 transition-colors duration-300">
+                            Log In
+                        </button>
+                        <p class="text-sm text-gray-600">Don't have an account? <a href="#" class="text-blue-500 hover:underline" onclick="document.getElementById('modal').close(); document.getElementById('modalSignup').showModal();">Sign Up</a></p>
+                    </form>
+                </div>
+            </div>
+    </dialog>
+    <!-- modal o trnag thai signup -->
+        <dialog id="modalSignup" class="p-0 bg-transparent overflow-visible focus:outline-none backdrop:bg-slate-500/80 backdrop:backdrop-blur-sm">
+                <div class="flex justify-center items-center flex-col">
+                    <!-- Lời chào đăng nhập (Giữ nguyên class của bạn) -->
+                    <div class="w-[300px] h-[100px] bg-gradient-to-b from-[#4B2B95] to-[#1DA9EF] p-3 flex flex-col items-center justify-center
+                                sm:w-[400px] sm:h-[120px]">
+                        <h2 class="text-white text-lg font-light font-serif">Join SoundWave</h2>
+                        <p class="text-white">Create your free account</p>
+                    </div>
+                    <!-- Khung Form trắng (Giữ nguyên class của bạn, thêm nút X đóng nhanh nếu muốn) -->
+                    <div class="w-[300px] h-[400px] bg-white flex flex-col justify-center items-center p-2 space-y-2 relative
+                                sm:w-[400px] sm:h-[420px] sm:p-4
+                                md:px-10">
+                        <form method="dialog" class="absolute top-3 right-4">
+                            <button class="text-gray-400 hover:text-gray-600 font-bold text-lg focus:outline-none">✕</button>
+                        </form>
+                        <h2 class="text-3xl font-medium font-serif mb-[30px]">Create Account</h2>
+                        
+                        <form action="" class="flex w-full flex-col justify-start items-center space-y-5 px-2">
+                            <!-- username (Giữ nguyên class của bạn) -->
+                            <div class="flex items-center w-full h-[35px] text-white rounded-full bg-gray-400 px-3 space-x-2 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" placeholder="Username" class="flex-1 h-full bg-transparent focus:outline-none placeholder:text-white">
+                            </div>
+                            <!-- email (Giữ nguyên class của bạn) -->
+                            <div class="flex items-center w-full h-[35px] text-white rounded-full bg-gray-400 px-3 space-x-2 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
+                                <i class="fa-solid fa-envelope"></i>
+                                <input type="email" placeholder="Email" class="flex-1 h-full bg-transparent focus:outline-none placeholder:text-white">
+                            </div>
+                            <!-- password (Giữ nguyên class của bạn) -->
+                            <div class="flex items-center w-full h-[35px] text-white rounded-full bg-gray-400 px-3 space-x-2 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" placeholder="Password" class="flex-1 h-full bg-transparent focus:outline-none placeholder:text-white">
+                            </div>
+                            <!-- confirm password (Giữ nguyên class của bạn) -->
+                            <div class="flex items-center w-full h-[35px] text-white rounded-full bg-gray-400 px-3 space-x-2 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" placeholder="Confirm Password" class="flex-1 h-full bg-transparent focus:outline-none placeholder:text-white">
+                            </div>
+                            <!-- button login (Giữ nguyên class của bạn, xóa chữ sm: bị thừa ở cuối) -->
+                            <button type="submit" class="w-full h-[35px] rounded-full bg-gradient-to-r from-[#4B2B95] to-[#5A65F6] text-white font-bold hover:opacity-90 transition-colors duration-300">
+                                Sign Up
+                            </button>
+                            <p class="text-sm text-gray-600">Already have an account? <a href="#" class="text-blue-500 hover:underline" onclick="document.getElementById('modalSignup').close(); document.getElementById('modal').showModal();">Log In</a></p>
+                        </form>
+                    </div>
+                </div>
+        </dialog>
+
+
+    <!-- Desktop Navigation -->
+    <div class="hidden sm:flex fixed z-[60] items-center space-x-4 px-[clamp(1rem,5vw,2rem)] py-4 pointer-events-none">
+        <div class="flex items-center space-x-4 pointer-events-auto">
+            <img src="./img/logo.png"
+                alt="Logo" 
+                class="w-20 h-20 rounded-full object-cover">
+            <span class="text-[20px] text-white font-bold">SoundWave</span>
         </div>
-    
-     </div>
-
-<!-- Desktop Navigation -->
-<div class="hidden sm:flex fixed z-[60] items-center space-x-4 px-[clamp(1rem,5vw,2rem)] py-4 pointer-events-none">
-    <div class="flex items-center space-x-4 pointer-events-auto">
-        <img src="./img/logo.png"
-             alt="Logo" 
-             class="w-20 h-20 rounded-full object-cover">
-        <span class="text-[20px] text-white font-bold">SoundWave</span>
     </div>
-</div>
 
-<div class="hidden sm:flex fixed top-0 right-0 z-[60] items-center px-[clamp(1rem,5vw,2rem)] py-4 pointer-events-none">
-    <button class="text-black font-bold px-6 py-2 rounded-full bg-white pointer-events-auto shadow-lg">
-        Log In
-    </button>
-</div>
+    <div class="hidden sm:flex fixed top-0 right-0 z-[60] items-center px-[clamp(1rem,5vw,2rem)] py-4 pointer-events-none">
+        <button class="text-black font-bold px-6 py-2 rounded-full bg-white pointer-events-auto shadow-lg" onclick="document.getElementById('modal').showModal()">
+            Log In
+        </button>
+    </div>
 
 
-<!-- Mobile Header -->
-<header id="header" class="w-full h-20 z-50 px-[clamp(1rem,5vw,2rem)] py-4 flex items-center justify-center transition-colors duration-300 fixed top-0 left-0 sm:absolute sm:bg-transparent">
-    <div class="flex w-full items-center justify-between sm:hidden">
-        <div class="flex items-center space-x-2 p-2">
-            <img src="./img/logo.png" alt="Logo"
-                  class="w-20 h-20 rounded-full object-cover">
-            <span class="text-white font-bold">SoundWave</span>
+    <!-- Mobile Header -->
+    <header id="header" class="w-full h-20 z-50 px-[clamp(1rem,5vw,2rem)] py-4 flex items-center justify-center transition-colors duration-300 fixed top-0 left-0 sm:absolute sm:bg-transparent">
+        <div class="flex w-full items-center justify-between sm:hidden">
+            <div class="flex items-center space-x-2 p-2">
+                <img src="./img/logo.png" alt="Logo"
+                    class="w-20 h-20 rounded-full object-cover">
+                <span class="text-white font-bold">SoundWave</span>
+            </div>
+            <div class="px-2 space-x-2 flex items-center">
+            <button class="text-black text-sm font-bold px-4 py-2 rounded-full bg-white shadow-lg" onclick="document.getElementById('modal').showModal()">Log In</button>
+            <button id="menu" class="text-white font-bold px-3 py-2 rounded-md bg-black transition-transform duration-300">=</button>
+            </div> 
         </div>
-        <div class="px-2 space-x-2 flex items-center">
-          <button class="text-black text-sm font-bold px-4 py-2 rounded-full bg-white shadow-lg">Log In</button>
-          <button id="menu" class="text-white font-bold px-3 py-2 rounded-md bg-black transition-transform duration-300">=</button>
-        </div> 
-    </div>
 
-    <nav class="hidden sm:flex items-center space-x-8">
-        <a href="#" class="text-white font-semibold hover:text-gray-300 transition">Home</a>
-        <a href="#" class="text-white font-semibold hover:text-gray-300 transition">Download</a>
-        <a href="#" class="text-white font-semibold hover:text-gray-300 transition">Premium</a>
-        <a href="#" class="text-white font-semibold hover:text-gray-300 transition">Help</a>
-    </nav>
-</header>
+        <nav class="hidden sm:flex items-center space-x-8">
+            <a href="#" class="text-white font-semibold hover:text-gray-300 transition">Home</a>
+            <a href="#" class="text-white font-semibold hover:text-gray-300 transition">Download</a>
+            <a href="#" class="text-white font-semibold hover:text-gray-300 transition">Premium</a>
+            <a href="#" class="text-white font-semibold hover:text-gray-300 transition">Help</a>
+        </nav>
+    </header>
 
-<!-- Hero Section -->
-<section class="h-screen bg-[#1E1F5A] px-5 flex items-center justify-center overflow-hidden relative pt-20">
-    <!-- Hình tròn: Dùng biến CSS để không làm hỏng responsive của Tailwind -->
-    <div id="obj1" class="absolute rounded-full bg-gradient-to-b from-[#15F099] to-[#0069A6] 
-                z-0 opacity-80 blur-sm
-                w-[300px] h-[300px] 
-                [--base-x:80px] [--base-y:-35%]
-                sm:w-[350px] sm:h-[350px] sm:[--base-x:25vw] sm:[--base-y:0%]
-                lg:w-[400px] lg:h-[400px] lg:[--base-x:30vw] lg:[--base-y:-10%]"
-                style="transform: translate(calc(var(--base-x) + var(--scroll-x, 0px)), calc(var(--base-y) + var(--scroll-y, 0px)))">
-    </div>
+    <!-- Hero Section -->
+    <section class="h-screen bg-[#1E1F5A] px-5 flex items-center justify-center overflow-hidden relative pt-20">
+        <!-- Hình tròn: Dùng biến CSS để không làm hỏng responsive của Tailwind -->
+        <div id="obj1" class="absolute rounded-full bg-gradient-to-b from-[#15F099] to-[#0069A6] 
+                    z-0 opacity-80 blur-sm
+                    w-[300px] h-[300px] 
+                    [--base-x:80px] [--base-y:-35%]
+                    sm:w-[350px] sm:h-[350px] sm:[--base-x:25vw] sm:[--base-y:0%]
+                    lg:w-[400px] lg:h-[400px] lg:[--base-x:30vw] lg:[--base-y:-10%]"
+                    style="transform: translate(calc(var(--base-x) + var(--scroll-x, 0px)), calc(var(--base-y) + var(--scroll-y, 0px)))">
+        </div>
 
-    <!-- Container nội dung -->
-    <div class="flex flex-col-reverse h-full items-center justify-center relative z-10 sm:flex-row sm:space-x-20">
+        <!-- Container nội dung -->
+        <div class="flex flex-col-reverse h-full items-center justify-center pb-10 relative z-10 sm:flex-row sm:space-x-20">
+            
+            <!-- Cột Text -->
+            <div class="flex flex-col items-center justify-center text-center sm:text-left sm:items-start">
+                <h1 class="text-2xl md:text-5xl font-bold text-white mb-6">Music for everyone</h1>
+                <p class="text-md md:text-xl text-gray-300 mb-8 max-w-[400px] sm:max-w-md">
+                    Ứng dụng nghe nhạc trực tuyến với playlist thông minh, 
+                    âm thanh chất lượng cao và khả năng nghe offline.
+                </p>
+                <button class="text-black font-bold px-6 py-3 rounded-full bg-white shadow-lg hover:bg-gray-100 transition">
+                    Get SoundWave Free
+                </button>
+            </div>
+
+            <!-- Cột Hình ảnh -->
+            <div class="mb-5 sm:mb-0">
+                <img src="https://www.shutterstock.com/image-vector/girl-listening-music-on-headphones-600nw-2420570351.jpg" 
+                    alt="illustration" 
+                    class="w-[180px] sm:w-[240px] md:w-[300px] lg:w-[400px] h-auto rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- section-->
+    <section class="w-full  bg-[#5D77CE] flex flex-col  py-10 relative overflow-hidden">
+        <div class="w-full mb-10 px-5">
+            <h2 class="text-lg font-bold md:text-xl text-gray-300 max-w-[400px] sm:max-w-md">
+                With SoundWave, you can play millions of songs for free. Listen to the songs you love and find music from all over the world.
+            </h2>
+        </div>
+
+        <!-- Phần Card Grid: 2 cột mặc định, 4 cột từ màn hình lg trở lên -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 w-full">
+            <div class="w-full h-[180px] bg-slate-600 rounded-lg flex items-center flex-col p-2 relative min-w-0
+                        sm:h-[250px] md:h-72 
+                        hover:bg-slate-700 transition-colors duration-300 hover:scale-105 transform-gpu">
+                <p class="text-white text-xs sm:text-lg my-4 text-center px-1 font-sans leading-snug">Discover new music and albums</p>
+                
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
+                    <div class="w-[80px] h-[80px] bg-white flex justify-center items-center rounded-t-lg shadow-lg
+                                sm:w-[120px] sm:h-[120px]
+                                md:w-[180px] md:h-[180px]">  
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-[180px] bg-slate-600 rounded-lg flex items-center flex-col p-2 relative min-w-0
+                        sm:h-[250px] md:h-72 
+                        hover:bg-slate-700 transition-colors duration-300 hover:scale-105 transform-gpu">
+                <p class="text-white text-xs sm:text-lg my-4 text-center px-1 font-sans leading-snug">Search for your favorite song or artist</p>
+                
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
+                    <div class="w-[80px] h-[80px] bg-white rounded-t-lg shadow-lg overflow-hidden
+                                sm:w-[120px] sm:h-[120px]
+                                md:w-[180px] md:h-[180px]">
+                        <img src="./img/search.png" alt="img" class="object-cover w-full h-full">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-[180px] bg-slate-600 rounded-lg flex items-center flex-col p-2 relative min-w-0
+                        sm:h-[250px] md:h-72 
+                        hover:bg-slate-700 transition-colors duration-300 hover:scale-105 transform-gpu">
+                <p class="text-white text-xs sm:text-lg my-4 text-center px-1 font-sans leading-snug">Enjoy playlists made just for you</p>
+                
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
+                    <div class="w-[80px] h-[80px] bg-white flex justify-center items-center rounded-t-lg shadow-lg
+                                sm:w-[120px] sm:h-[120px]
+                                md:w-[180px] md:h-[180px]">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-[180px] bg-slate-600 rounded-lg flex items-center flex-col p-2 relative min-w-0
+                        sm:h-[250px] md:h-72 
+                        hover:bg-slate-700 transition-colors duration-300 hover:scale-105 transform-gpu">
+                <p class="text-white text-xs sm:text-lg my-4 text-center px-1 font-sans leading-snug">Make and share your own playlists</p>
+                
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
+                    <div class="w-[80px] h-[80px] bg-white flex justify-center items-center rounded-t-lg shadow-lg
+                                sm:w-[120px] sm:h-[120px]
+                                md:w-[180px] md:h-[180px]">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-[180px] bg-slate-600 rounded-lg flex items-center flex-col p-2 relative min-w-0
+                        sm:h-[250px] md:h-72 
+                        hover:bg-slate-700 transition-colors duration-300 hover:scale-105 transform-gpu">
+                <p class="text-white text-xs sm:text-lg my-4 text-center px-1 font-sans leading-snug">Find music for any mood and activity</p>
+                
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
+                    <div class="w-[80px] h-[80px] bg-white flex justify-center items-center rounded-t-lg shadow-lg
+                                sm:w-[120px] sm:h-[120px]
+                                md:w-[180px] md:h-[180px]">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-[180px] bg-slate-600 rounded-lg flex items-center flex-col p-2 relative min-w-0
+                        sm:h-[250px] md:h-72 
+                        hover:bg-slate-700 transition-colors duration-300 hover:scale-105 transform-gpu">
+                <p class="text-white text-xs sm:text-lg my-4 text-center px-1 font-sans leading-snug">Listen on all your devices</p>
+                
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
+                    <div class="w-[80px] h-[80px] bg-white flex justify-center items-center rounded-t-lg shadow-lg
+                                sm:w-[120px] sm:h-[120px]
+                                md:w-[180px] md:h-[180px]">
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        <!-- Cột Text -->
-        <div class="flex flex-col items-center justify-center text-center sm:text-left sm:items-start">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Music for everyone</h1>
-            <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-[400px] sm:max-w-md">
-                Ứng dụng nghe nhạc trực tuyến với playlist thông minh, 
-                âm thanh chất lượng cao và khả năng nghe offline.
-            </p>
-            <button class="text-black font-bold px-6 py-3 rounded-full bg-white shadow-lg hover:bg-gray-100 transition">
-                Get SoundWave Free
-            </button>
-        </div>
-
-        <!-- Cột Hình ảnh -->
-        <div class="mb-10 sm:mb-0">
-            <img src="https://www.shutterstock.com/image-vector/girl-listening-music-on-headphones-600nw-2420570351.jpg" 
-                 alt="illustration" 
-                 class="w-[250px] md:w-[300px] lg:w-[400px] h-auto rounded-lg shadow-lg">
-        </div>
-    </div>
-</section>
-
-<!-- Section tiếp theo -->
-<section class="min-h-screen bg-[#5D77CE] flex flex-col px-5 py-20 relative">
+    </section>
+    <!-- Section tiếp theo -->
+    <section class="w-full h-auto py-10 bg-slate-600 flex flex-col px-5 md:py-16">
     
-    <div class="w-full mb-10 ">
-        <h2 class="text-lg font-bold md:text-xl text-gray-300 max-w-[400px] sm:max-w-md">
-            With SoundWave, you can play millions of songs for free. Listen to the songs you love and find music from all over the world.
-        </h2>
-    </div>
-
-    <!-- Phần Card Grid: 2 cột mặc định, 4 cột từ màn hình lg trở lên -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full
-                ">
-        <!--  các item -->
-        <div class="w-[200px] h-[200px] bg-slate-600 rounded-lg flex items-center flex-col p-4
-                    sm:w-full sm:h-[250px]
-                    md:w-full md:h-72 relative
-                    hover:bg-slate-700 transition-colors duration-300 
-                    hover:scale-105 transform-gpu">
-            <p class="text-white text-md sm:text-lg my-5">Discover new music and albums</p>
-            
-            <!-- Căn absolute sát đáy, left 50% và dùng translate để căn giữa ngang -->
-            <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
-                <div class="w-[80px] h-[80px] bg-white flex justify-center items-center rounded-t-lg shadow-lg
-                            sm:w-[120px] sm:h-[120px]
-                            md:w-[180px] md:h-[180px]">  
-                </div>
-            </div>
-        </div>
-        <!--Item 2-->
-        <div class="w-[200px] h-[200px] bg-slate-600 rounded-lg flex items-center flex-col p-4
-                    sm:w-full sm:h-[250px]
-                    md:w-full md:h-72 relative
-                    hover:bg-slate-700 transition-colors duration-300 
-                    hover:scale-105 transform-gpu">
-            <p class="text-white text-md sm:text-lg my-5">Search for your favorite song or artist</p>
-            
-            <!-- Container bọc ngoài div trắng: dùng flex-1 để lấp đầy khoảng trống và căn giữa -->
-            <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
-                <div class="w-[80px] h-[80px] bg-white rounded-t-lg shadow-lg
-                            sm:w-[120px] sm:h-[120px]
-                            md:w-[180px] md:h-[180px]">
-                            <img src="./img/search.png" alt="img"
-                            class="object-cover cover w-full h-full rounded-t-lg">
-                </div>
-            </div>
-        </div>
-        <!--Item 3-->
-        <div class="w-[200px] h-[200px] bg-slate-600 rounded-lg flex items-center flex-col p-4
-                    sm:w-full sm:h-[250px]
-                    md:w-full md:h-72 relative
-                    hover:bg-slate-700 transition-colors duration-300 
-                    hover:scale-105 transform-gpu">
-            <p class="text-white text-md sm:text-lg my-5">Enjoy platlists made just for you</p>
-            
-            <!-- Container bọc ngoài div trắng: dùng flex-1 để lấp đầy khoảng trống và căn giữa -->
-            <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
-                <div class="w-[80px] h-[80px] bg-white flex justify-center items-center rounded-t-lg shadow-lg
-                            sm:w-[120px] sm:h-[120px]
-                            md:w-[180px] md:h-[180px]">
-                </div>
-            </div>
-        </div>
-        <!--Item 4-->
-        <div class="w-[200px] h-[200px] bg-slate-600 rounded-lg flex items-center flex-col p-4
-                    sm:w-full sm:h-[250px]
-                    md:w-full md:h-72 relative
-                    hover:bg-slate-700 transition-colors duration-300 
-                    hover:scale-105 transform-gpu">
-            <p class="text-white text-md sm:text-lg my-5">Make and share your own playlists</p>
-            
-            <!-- Container bọc ngoài div trắng: dùng flex-1 để lấp đầy khoảng trống và căn giữa -->
-            <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
-                <div class="w-[80px] h-[80px] bg-white flex justify-center items-center rounded-t-lg shadow-lg
-                            sm:w-[120px] sm:h-[120px]
-                            md:w-[180px] md:h-[180px]">
-                </div>
-            </div>
-        </div>
-        <!--Item 5-->
-        <div class="w-[200px] h-[200px] bg-slate-600 rounded-lg flex items-center flex-col p-4
-                    sm:w-full sm:h-[250px]
-                    md:w-full md:h-72 relative
-                    hover:bg-slate-700 transition-colors duration-300 
-                    hover:scale-105 transform-gpu">
-            <p class="text-white text-md sm:text-lg my-5">Find music for any mood and activity</p>
-            
-            <!-- Container bọc ngoài div trắng: dùng flex-1 để lấp đầy khoảng trống và căn giữa -->
-            <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
-                <div class="w-[80px] h-[80px] bg-white flex justify-center items-center rounded-t-lg shadow-lg
-                            sm:w-[120px] sm:h-[120px]
-                            md:w-[180px] md:h-[180px]">
-                </div>
-            </div>
-        </div>
-        <!--Item 6-->
-        <div class="w-[200px] h-[200px] bg-slate-600 rounded-lg flex items-center flex-col p-4
-                    sm:w-full sm:h-[250px]
-                    md:w-full md:h-72 relative
-                    hover:bg-slate-700 transition-colors duration-300 
-                    hover:scale-105 transform-gpu">
-            <p class="text-white text-md sm:text-lg my-5">Listen on all your devices</p>
-            
-            <!-- Container bọc ngoài div trắng: dùng flex-1 để lấp đầy khoảng trống và căn giữa -->
-            <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
-                <div class="w-[80px] h-[80px] bg-white flex justify-center items-center rounded-t-lg shadow-lg
-                            sm:w-[120px] sm:h-[120px]
-                            md:w-[180px] md:h-[180px]">
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</section>
-<!-- Section tiếp theo -->
-<section class="w-full h-[350px] bg-slate-600 flex flex-col px-5 
-            sm:h-[400px]
-            md:h-[500px]">
-    <div class="w-full h-[200px] mx-auto flex items-center justify-center text-center 
-                sm:h-[250px]
-                md:h-[300px]">
-        <span class="text-bold-500 text-lg text-white 
-                    sm:text-xl
-                    md:text-2xl"> SoundWave offers free music,curated playlists can't find anywhere else, Or you can get our <p class="text-blue-400">Premium plan</p></span>
-    </div>
-    <!--Icon quyen loi cua premium-->
-    <div class=" w-full h-[300px] flex items-center justify-center space-x-5 
-                sm:space-x-20 sm:h-[200px]
-                md:space-x-40 md:h-[250px]">
-                <!--Item 1-->
-        <div class="w-[300px] h-[200px] rounded-lg   flex flex-col items-center justify-start padding-4
-                    sm:w-[400px] sm:h-[250px]
-                    md:w-[500px] md:h-[300px]">
-            <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 object-cover flex items-center justify-center
-                        sm:w-20 sm:h-20
-                        md:w-24 md:h-24">
-                <i class="fa-solid fa-music text-2xl text-white"></i>
-            </div>
-                <p class="w-full stext-sm font-bold text-white
-                    sm:text-lg
-                    md:text-xl">Enjoy amazing sound quality on personalized music</p>
-        </div>
-        <!--Item 2-->
-        <div class="w-[300px] h-[200px] rounded-lg  flex flex-col items-center justify-satart
-                    sm:w-[400px] sm:h-[250px]
-                    md:w-[500px] md:h-[300px]">
-            <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 object-cover flex items-center justify-center
-                        sm:w-20 sm:h-20
-                        md:w-24 md:h-24">
-                <i class="fa-solid fa-download text-2xl text-white"></i>
-            </div>
-            <p class="text-sm font-bold text-white
-                    sm:text-lg
-                    md:text-xl">Dowload and play music for offline listening</p>
-        </div>
-        <!--Item 3-->
-        <div class="w-[300px] h-[200px]  rounded-lg  flex flex-col items-center justify-start
-                    sm:w-[400px] sm:h-[250px]
-                    md:w-[500px] md:h-[300px]">
-            <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 object-cover flex items-center justify-center
-                        sm:w-20 sm:h-20
-                        md:w-24 md:h-24">
-                <i class="fa-solid fa-ad text-2xl text-white"></i>
-            </div>
-            <p class="text-sm font-bold text-white
-                    sm:text-lg
-                    md:text-xl">Listen to an ablbum or playlist without ad breaks</p>
-        </div>
-    </div>
-</section>
-
-<!-- Section comments about SoundWave -->
- <section class="w-full h-[350px] flex flex-col space-y-6 bg-[#375AA9]">
-    <div class="w-full h-[50px] flex items-center justify-center px-5 pt-10
-                sm:h-[80px] sm:px-10 sm:justify-start
-                md:h-[100px]">
-        <h2 class="text-lg font-bold text-white sm:text-xl md:text-2xl">What people are saying about <spand class="text-[#00C4FF]">SoundWave</spand></h2>
-    </div>
-
-    <!-- Container: Thêm id="scroll-container" -->
-    <div id="scroll-container" class="w-full h-[300px]flex-1 flex space-x-10 overflow-x-auto snap-x snap-mandatory no-scrollbar px-4 sm:space-x-20 md:space-x-40">
-        
-        <!-- Spacer giả ở đầu giúp thẻ đầu/cuối có thể căn giữa -->
-        <div class="shrink-0 w-[calc(50vw-170px)] sm:w-[calc(50vw-145px)] md:w-[calc(50vw-170px)]"></div>
-
-        <div class="comment-card snap-center w-[300px] h-[250px] bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[400px] md:w-[450px]">
-            <div class="flex items-center space-x-4 mb-2">
-                <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=1">
-                <p class="text-white">Kelly S</p>
-                <div class="w-[1px] h-7 bg-white/30"></div>
-            </div>
-            <p class="text-white italic">"SoundWave has completely transformed the way I listen to music."</p>
-        </div>
-
-        <div class="comment-card snap-center w-[300px] h-[250px] bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[400px] md:w-[450px]">
-            <div class="flex items-center space-x-4 mb-2">
-                <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=2">
-                <p class="text-white">David M</p>
-                <div class="w-[1px] h-7 bg-white/30"></div>
-            </div>
-            <p class="text-white italic">"I love how easy it is to discover new music on SoundWave."</p>
-        </div>
-
-        <div class="comment-card snap-center w-[300px] h-[250px] bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[400px] md:w-[450px]">
-            <div class="flex items-center space-x-4 mb-2">
-                <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=3">
-                <p class="text-white">Sophia L</p>
-                <div class="w-[1px] h-7 bg-white/30"></div>
-            </div>
-            <p class="text-white italic">"The sound quality is incredible. I can't go back!"</p>
-        </div>
-
-        <!-- Spacer giả ở cuối -->
-        <div class="shrink-0 w-[calc(50vw-170px)] sm:w-[calc(50vw-145px)] md:w-[calc(50vw-170px)]"></div>
-    </div>
-
-    <!-- Dấu chấm: thêm class "dot" -->
-    <div class="flex justify-center space-x-2 py-2">
-        <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
-        <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
-        <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
-    </div>
-</section>
-
-<!-- Section Download for ggplay appstore and window -->
-<section class="h-[400px] bg-[#1E1F5A] flex items-center justify-center relative px-20 overflow-hidden
-            sm:h-[500px]
-            md:h-[600px]">
-    <!-- Hình tròn nền -->
-    <div class="h-[300px] w-[300px] rounded-full absolute top-60vh right-[-100px] bg-gradient-to-b from-green-600 to-black opacity-90 blur-sm z-0
-                sm:w-[400px] sm:h-[400px] sm:top-40vh sm:right-[150px]
-                "></div>
-    <div class="h-[150px] w-[150px] rounded-full absolute top-10 right-[150px] bg-gradient-to-b from-green-600 to-black  blur-sm z-0
-                sm:w-[250px] sm:h-[250px] sm:top-30vh sm:right-[350px]
-                "></div>
-    <!-- Container nội dung -->
-    <div class="flex flex-col items-center justify-center text-center px-[clamp(1rem,5vw,2rem)] z-10">
-        <h2 class="text-xl font-bold text-white mb-3
-                    sm:text-2xl
-                    md:text-3xl
-                    lg:text-4xl">Get <span class="text-[#00C4FF]"> SoundWave</span> on your device</h2>
-        <p class="text-md text-gray-300 mb-8 max-w-[400px] 
-                sm:max-w-md sm:text-lg
-                md:max-w-lg md:text-xl">
-            Download SoundWave for free on Google Play, App Store, and Windows. Enjoy your music anywhere!
+    <div class="w-full max-w-3xl mx-auto text-center mb-8 sm:mb-12">
+        <p class="font-bold text-lg text-white sm:text-xl md:text-2xl leading-relaxed"> 
+            SoundWave offers free music, curated playlists can't find anywhere else, 
+            Or you can get our <span class="text-blue-400 inline-block font-bold ">Premium plan</span>
         </p>
-        <div class="flex space-x-5 mx-[clamp(1rem,5vw,2rem)] 
-                    sm:space-x-10
-                    md:space-x-20">
-            <button class="w-[120px] h-[50px] rounded-md flex items-center justify-center space-x-2  bg-black text-white  shadow-lg hover:bg-slate-600 transition
-                            sm:w-[140px] sm:h-[60px]
-                            md:w-[160px] md:h-[70px]">
-                <i class="fa-brands fa-google-play text-xl
-                        sm:text-2xl
-                        md:text-3xl"></i>
-                <span class="text-sm font-bold
-                            sm:text-md
-                            md:text-lg
-                            lg:text-xl">Google Play</span>
-            </button>
-            <button class="w-[120px] h-[50px] rounded-md flex items-center justify-center space-x-2  bg-black text-white  shadow-lg hover:bg-slate-600 transition
-                            sm:w-[140px] sm:h-[60px]
-                            md:w-[160px] md:h-[70px]">
-                <i class="fa-brands fa-app-store-ios text-xl
-                        sm:text-2xl
-                        md:text-3xl"></i>
-                <span class="text-sm font-bold
-                            sm:text-md
-                            md:text-lg
-                            lg:text-xl">App Store</span>
-            </button>
-            <button class="w-[120px] h-[50px] rounded-md flex items-center justify-center space-x-2 bg-black text-white shadow-lg hover:bg-slate-600 transition
-                            sm:w-[140px] sm:h-[60px]
-                            md:w-[160px] md:h-[70px]">
-                <i class="fa-solid fa-desktop text-xl"></i>
-                <span class=" text-sm font-bold
-                            sm:text-md
-                            md:text-lg
-                            lg:text-xl">Windows</span>
-            </button>
+    </div>
 
+    <div class="w-full max-w-5xl mx-auto grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6 md:gap-12">
+        
+        <div class="w-full flex flex-col items-center text-center p-2">
+            <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 flex items-center justify-center flex-shrink-0
+                        sm:w-20 sm:h-20
+                        md:w-24 md:h-24">
+                <i class="fa-solid fa-music text-2xl text-white sm:text-3xl"></i>
+            </div>
+            <p class="text-sm font-bold text-white max-w-[280px] sm:max-w-none sm:text-base md:text-lg">
+                Enjoy amazing sound quality on personalized music
+            </p>
         </div>
+
+        <div class="w-full flex flex-col items-center text-center p-2">
+            <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 flex items-center justify-center flex-shrink-0
+                        sm:w-20 sm:h-20
+                        md:w-24 md:h-24">
+                <i class="fa-solid fa-download text-2xl text-white sm:text-3xl"></i>
+            </div>
+            <p class="text-sm font-bold text-white max-w-[280px] sm:max-w-none sm:text-base md:text-lg">
+                Download and play music for offline listening
+            </p>
+        </div>
+
+        <div class="w-full flex flex-col items-center text-center p-2">
+            <div class="w-16 h-16 rounded-full bg-slate-400 mb-4 flex items-center justify-center flex-shrink-0
+                        sm:w-20 sm:h-20
+                        md:w-24 md:h-24">
+                <i class="fa-solid fa-ad text-2xl text-white sm:text-3xl"></i>
+            </div>
+            <p class="text-sm font-bold text-white max-w-[280px] sm:max-w-none sm:text-base md:text-lg">
+                Listen to an album or playlist without ad breaks
+            </p>
+        </div>
+
     </div>
-    
 </section>
-<!--footer and contact -->
-<footer class="w-full py-6 bg-[#1E1F5A] flex items-center justify-center">
-    <p class="text-sm text-gray-300">© 2026 SoundWave. All rights reserved.</p>
-    <div class="w-[1px] h-5 bg-gray-300 mx-4"></div>
-    <div class="flex space-x-4">
-        <a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a>
-        <a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a>
-        <a href="#" class="text-gray-300 hover:text-white transition">Contact Us</a>
-    </div>
-</footer>
 
-<script>
-// 1. Xử lý Header khi cuộn (Mobile)
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-    if(window.innerWidth <= 640) {
-        if (window.scrollY > 10) {
-            header.classList.add('bg-black', 'shadow-md');
-            header.classList.remove('bg-transparent');
-        } else {
-            header.classList.remove('bg-black', 'shadow-md');
-            header.classList.add('bg-transparent');
-        }
-    }
-});
+    <!-- Section comments about SoundWave -->
+    <section class="w-full h-[350px] flex flex-col space-y-6 bg-[#375AA9]">
+        <div class="w-full h-[50px] flex items-center justify-center px-5 pt-10
+                    sm:h-[80px] sm:px-10 sm:justify-start
+                    md:h-[100px]">
+            <h2 class="text-lg font-bold text-white sm:text-xl md:text-2xl">What people are saying about <spand class="text-[#00C4FF]">SoundWave</spand></h2>
+        </div>
 
-// 2. Logic di chuyển hình tròn SANG TRÁI khi scroll
-const obj1 = document.getElementById('obj1');
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    
-    // moveX âm để di chuyển sang trái
-    const moveX = scrollY * -0.5; 
-    // moveY nhẹ để tạo hiệu ứng bay
-    const moveY = scrollY * 0.3; 
+        <!-- Container: Thêm id="scroll-container" -->
+        <div id="scroll-container" class="w-full h-[300px]flex-1 flex space-x-10 overflow-x-auto snap-x snap-mandatory no-scrollbar px-4 sm:space-x-20 md:space-x-40">
+            
+            <!-- Spacer giả ở đầu giúp thẻ đầu/cuối có thể căn giữa -->
+            <div class="shrink-0 w-[calc(50vw-170px)] sm:w-[calc(50vw-145px)] md:w-[calc(50vw-170px)]"></div>
 
-    obj1.style.setProperty('--scroll-x', `${moveX}px`);
-    obj1.style.setProperty('--scroll-y', `${moveY}px`);
-});
+            <div class="comment-card snap-center w-[300px] h-[250px] bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[400px] md:w-[450px]">
+                <div class="flex items-center space-x-4 mb-2">
+                    <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=1">
+                    <p class="text-white">Kelly S</p>
+                    <div class="w-[1px] h-7 bg-white/30"></div>
+                </div>
+                <p class="text-white italic">"SoundWave has completely transformed the way I listen to music."</p>
+            </div>
 
-// 3. Hiệu ứng nút Menu
-const menuButton = document.getElementById('menu');
-menuButton.addEventListener('click', () => {
-    menuButton.classList.toggle('rotate-90');
-});
+            <div class="comment-card snap-center w-[300px] h-[250px] bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[400px] md:w-[450px]">
+                <div class="flex items-center space-x-4 mb-2">
+                    <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=2">
+                    <p class="text-white">David M</p>
+                    <div class="w-[1px] h-7 bg-white/30"></div>
+                </div>
+                <p class="text-white italic">"I love how easy it is to discover new music on SoundWave."</p>
+            </div>
 
-document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("scroll-container");
-    const cards = document.querySelectorAll(".comment-card");
-    const dots = document.querySelectorAll(".dot");
-    // 1. Hàm cập nhật trạng thái dấu chấm dựa trên vị trí cuộn
-    const updateDots = () => {
-        let activeIndex = 0;
-        let minDistance = Infinity;
+            <div class="comment-card snap-center w-[300px] h-[250px] bg-slate-600 rounded-lg flex flex-col p-6 shrink-0 sm:w-[400px] md:w-[450px]">
+                <div class="flex items-center space-x-4 mb-2">
+                    <img class="w-12 h-12 rounded-full border-2 border-[#5865F2]" src="https://i.pravatar.cc/150?u=3">
+                    <p class="text-white">Sophia L</p>
+                    <div class="w-[1px] h-7 bg-white/30"></div>
+                </div>
+                <p class="text-white italic">"The sound quality is incredible. I can't go back!"</p>
+            </div>
 
-        cards.forEach((card, index) => {
-            // Tính khoảng cách từ tâm thẻ đến tâm màn hình
-            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-            const scrollCenter = container.scrollLeft + container.offsetWidth / 2;
-            const distance = Math.abs(cardCenter - scrollCenter);
+            <!-- Spacer giả ở cuối -->
+            <div class="shrink-0 w-[calc(50vw-170px)] sm:w-[calc(50vw-145px)] md:w-[calc(50vw-170px)]"></div>
+        </div>
 
-            if (distance < minDistance) {
-                minDistance = distance;
-                activeIndex = index;
+        <!-- Dấu chấm: thêm class "dot" -->
+        <div class="flex justify-center space-x-2 py-2">
+            <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
+            <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
+            <div class="dot w-2 h-2 bg-white rounded-full transition-opacity duration-300 opacity-30"></div>
+        </div>
+    </section>
+
+    <!-- Section Download for ggplay appstore and window -->
+    <section class="h-[400px] bg-[#1E1F5A] flex items-center justify-center relative px-20 overflow-hidden
+                sm:h-[500px]
+                md:h-[600px]">
+        <!-- Hình tròn nền -->
+        <div class="h-[300px] w-[300px] rounded-full absolute top-60vh right-[-100px] bg-gradient-to-b from-green-600 to-black opacity-90 blur-sm z-0
+                    sm:w-[400px] sm:h-[400px] sm:top-40vh sm:right-[150px]
+                    "></div>
+        <div class="h-[150px] w-[150px] rounded-full absolute top-10 right-[150px] bg-gradient-to-b from-green-600 to-black  blur-sm z-0
+                    sm:w-[250px] sm:h-[250px] sm:top-30vh sm:right-[350px]
+                    "></div>
+        <!-- Container nội dung -->
+        <div class="flex flex-col items-center justify-center text-center px-[clamp(1rem,5vw,2rem)] z-10">
+            <h2 class="text-xl font-bold text-white mb-3
+                        sm:text-2xl
+                        md:text-3xl
+                        lg:text-4xl">Get <span class="text-[#00C4FF]"> SoundWave</span> on your device</h2>
+            <p class="text-md text-gray-300 mb-8 max-w-[400px] 
+                    sm:max-w-md sm:text-lg
+                    md:max-w-lg md:text-xl">
+                Download SoundWave for free on Google Play, App Store, and Windows. Enjoy your music anywhere!
+            </p>
+            <div class="flex justify-center items-center gap-3 w-full px-4
+                        sm:gap-6 md:gap-8 mx-[clamp(1rem,5vw,2rem)]">
+            
+                <button class="flex-1 min-w-[100px] max-w-[160px] h-[50px] rounded-md flex items-center justify-center gap-2 bg-black text-white shadow-lg 
+                            hover:bg-slate-600 transition-all duration-300
+                            sm:h-[60px] md:h-[70px] sm:max-w-[140px] md:max-w-[160px]">
+                    <i class="fa-brands fa-google-play text-lg sm:text-2xl md:text-3xl"></i>
+                    <span class="text-xs font-bold whitespace-nowrap sm:text-sm md:text-base lg:text-lg">Google Play</span>
+                </button>
+
+                <button class="flex-1 min-w-[100px] max-w-[160px] h-[50px] rounded-md flex items-center justify-center gap-2 bg-black text-white shadow-lg 
+                            hover:bg-slate-600 transition-all duration-300
+                            sm:h-[60px] md:h-[70px] sm:max-w-[140px] md:max-w-[160px]">
+                    <i class="fa-brands fa-app-store-ios text-lg sm:text-2xl md:text-3xl"></i>
+                    <span class="text-xs font-bold whitespace-nowrap sm:text-sm md:text-base lg:text-lg">App Store</span>
+                </button>
+
+                <button class="flex-1 min-w-[100px] max-w-[160px] h-[50px] rounded-md flex items-center justify-center gap-2 bg-black text-white shadow-lg 
+                            hover:bg-slate-600 transition-all duration-300
+                            sm:h-[60px] md:h-[70px] sm:max-w-[140px] md:max-w-[160px]">
+                    <i class="fa-solid fa-desktop text-lg sm:text-2xl md:text-3xl"></i>
+                    <span class="text-xs font-bold whitespace-nowrap sm:text-sm md:text-base lg:text-lg">Windows</span>
+                </button>
+
+            </div>
+        </div>
+        
+    </section>
+    <!--footer and contact -->
+    <footer class="w-full h-auto bg-[#1E1F5A] flex flex-col items-center justify-center py-6 px-5 sm:flex-row sm:justify-between">
+        
+        <p class="text-sm text-gray-300 order-2 sm:order-1">
+            &copy; 2026 SoundWave. All rights reserved.
+        </p>
+        
+        <div class="hidden w-[1px] h-5 bg-gray-500 mx-4 sm:block sm:opacity-50"></div>
+        
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium order-1 sm:order-2">
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Privacy Policy</a>
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Terms of Service</a>
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Contact Us</a>
+        </div>
+
+    </footer>
+
+    <script>
+    // 1. Xử lý Header khi cuộn (Mobile)
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        if(window.innerWidth <= 640) {
+            if (window.scrollY > 10) {
+                header.classList.add('bg-black', 'shadow-md');
+                header.classList.remove('bg-transparent');
+            } else {
+                header.classList.remove('bg-black', 'shadow-md');
+                header.classList.add('bg-transparent');
             }
-        });
+        }
+    });
 
-        // Cập nhật opacity cho dấu chấm
-        dots.forEach((dot, index) => {
-            dot.style.opacity = index === activeIndex ? "1" : "0.3";
-        });
-    };
+    // 2. Logic di chuyển hình tròn SANG TRÁI khi scroll
+    const obj1 = document.getElementById('obj1');
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        
+        // moveX âm để di chuyển sang trái
+        const moveX = scrollY * -0.5; 
+        // moveY nhẹ để tạo hiệu ứng bay
+        const moveY = scrollY * 0.3; 
 
-    // 2. Tự động đưa thẻ số 2 (index 1) vào giữa khi vừa load trang
-    const centerCardTwo = () => {
-        const cardTwo = cards[1];
-        const offsetLeft = cardTwo.offsetLeft;
-        const containerWidth = container.offsetWidth;
-        const cardWidth = cardTwo.offsetWidth;
+        obj1.style.setProperty('--scroll-x', `${moveX}px`);
+        obj1.style.setProperty('--scroll-y', `${moveY}px`);
+    });
 
-        container.scrollLeft = offsetLeft - (containerWidth / 2) + (cardWidth / 2);
-        updateDots(); // Cập nhật dấu chấm ngay lập tức
-    };
+    // 3. Hiệu ứng nút Menu
+    const menuButton = document.getElementById('menu');
+    menuButton.addEventListener('click', () => {
+        menuButton.classList.toggle('rotate-90');
+    });
 
-    // Lắng nghe sự kiện cuộnS
-    container.addEventListener("scroll", updateDots);
+    document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById("scroll-container");
+        const cards = document.querySelectorAll(".comment-card");
+        const dots = document.querySelectorAll(".dot");
+        // 1. Hàm cập nhật trạng thái dấu chấm dựa trên vị trí cuộn
+        const updateDots = () => {
+            let activeIndex = 0;
+            let minDistance = Infinity;
 
-    // Chạy hàm căn giữa sau một khoảng nghỉ ngắn để trình duyệt render xong
-    setTimeout(centerCardTwo, 100);
-});
-</script>
+            cards.forEach((card, index) => {
+                // Tính khoảng cách từ tâm thẻ đến tâm màn hình
+                const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                const scrollCenter = container.scrollLeft + container.offsetWidth / 2;
+                const distance = Math.abs(cardCenter - scrollCenter);
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    activeIndex = index;
+                }
+            });
+
+            // Cập nhật opacity cho dấu chấm
+            dots.forEach((dot, index) => {
+                dot.style.opacity = index === activeIndex ? "1" : "0.3";
+            });
+        };
+
+        // 2. Tự động đưa thẻ số 2 (index 1) vào giữa khi vừa load trang
+        const centerCardTwo = () => {
+            const cardTwo = cards[1];
+            const offsetLeft = cardTwo.offsetLeft;
+            const containerWidth = container.offsetWidth;
+            const cardWidth = cardTwo.offsetWidth;
+
+            container.scrollLeft = offsetLeft - (containerWidth / 2) + (cardWidth / 2);
+            updateDots(); // Cập nhật dấu chấm ngay lập tức
+        };
+
+        // Lắng nghe sự kiện cuộnS
+        container.addEventListener("scroll", updateDots);
+
+        // Chạy hàm căn giữa sau một khoảng nghỉ ngắn để trình duyệt render xong
+        setTimeout(centerCardTwo, 100);
+    });
+    </script>
 
 </body>
 </html>
